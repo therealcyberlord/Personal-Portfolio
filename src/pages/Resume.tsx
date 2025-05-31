@@ -17,59 +17,69 @@ const calculateDuration = (start: string, end: string): string => {
 };
 
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long" };
+  const date = new Date(dateString + 'T12:00:00Z'); // Force to midday UTC to avoid timezone issues
+  const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short" };
   return date.toLocaleDateString(undefined, options);
 };
 
-const resumeData = [
+interface DescriptionItem {
+  text: string;
+  link?: { url: string; label: string };
+  suffix?: string;
+}
+
+const resumeData: Array<{
+  title: string;
+  institution: string;
+  startDate: string; // Format: YYYY-MM
+  endDate: string;   // Format: YYYY-MM or 'Present'
+  location: string;
+  description: DescriptionItem[];
+  logo: string;
+}> = [
   {
     title: "Software Engineer",
     institution: "Trinity Life Sciences",
-    startDate: "2025-01-07",
+    startDate: "2025-01",
     endDate: "Present",
-    location: "Waltham, Massachusetts, United States",
+    location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "New Product Development team" },
-      { text: "Generative AI, Agentic workflows, Full-stack development" },
+      { text: "Agents, AI workflows, Retrieval Augmented Generation, and full-stack development" },
+      { text: "I work on experimental AI features, piloting new technologies, and build full-stack features for both internal and external needs"}
     ],
     logo: Trinitylogo
   },
   {
-    title: "Generative AI Software Engineering Intern",
+    title: "Generative AI Intern, Trinity Life Sciences",
     institution: "Trinity Life Sciences",
-    startDate: "2024-06-17",
-    endDate: "2024-08-16",
-    location: "Waltham, Massachusetts, United States",
+    startDate: "2024-06",
+    endDate: "2024-08",
+    location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "Architected a production-ready evaluation system for a biopharma-focused Agentic RAG platform, leveraging LlamaIndex and Litestar to build performant endpoints on a python-based microservice" },
-      { text: "Boosted hybrid search relevance by 50%, improving LLM understanding of domain-specific terminology, and seamlessly integrated AWS Bedrock into existing AI workflows" },
-      { text: "First Generative AI intern hire at the company - shipped three main features during the span of the internship" },
+      { text: "Architected a production-ready evaluation system for a biopharma-focused RAG platform, using LlamaIndex 🦙 and Litestar to build performant endpoints on a python-based microservice" },
+      { text: "Boosted hybrid search relevance by 50%, improving LLM understanding of industry and company-specific lingo using a custom approach" },
+      { text: "Hired as the first AI/ML intern in company history" }
     ],
     logo: Trinitylogo
   },
   {
-    title: "Machine Learning Researcher at UMass BioNLP Lab",
+    title: "AI Researcher, UMass BioNLP Lab",
     institution: "Manning College of Information and Computer Sciences, UMass Amherst",
-    startDate: "2024-02-01",
-    endDate: "Present",
+    startDate: "2024-02",
+    endDate: "2025-01",
     location: "Amherst, Massachusetts, United States",
     description: [
-      { text: "Conducted research in retrieval-augmented generation (RAG), agentic design patterns, test-time compute (TTC), and large language model (LLM) evaluation incorporating human-in-the-loop methodologies" },
-      {
-        text: "Co-authored a research paper presenting MedQA-CS, a novel AI-SCE framework ",
-        link: { url: "https://arxiv.org/abs/2410.01553", label: "arXiv" },
-        suffix: ", with ongoing work in designing scalable Agentic RAG systems to enhance reasoning on medical benchmarks of varying difficulties by identifying the compute-optimal settings for scaling"
-      },
-      { text: "Applied knowledge distillation to develop judge models (e.g. Qwen 2.5, Llama 3.1) via QLoRA fine-tuning for accurate evaluation of QA, diagnosis, and physical exams sections in medical education" },
+      { text: "Conducted NLP research in retrieval-augmented generation (RAG), agentic patterns, test-time compute, and LLM evaluation incorporating human experts in the loop" },
+      { text: "Contributed to the design of agentic patterns that enhance reasoning across medical benchmarks of varying difficulty levels by identifying compute-optimal settings for scaling" },
+      { text: "Fine-tuned custom judge models for medical education via knowledge distillation from foundational models (Qwen, LLaMA) using QLoRA with UnSloth 🦥 and Hugging Face Transformers 🤗, deployed with VLLM for inference" }
     ],
     logo: CICSlogo
   },
   {
     title: "Undergraduate Course Assistant",
     institution: "Manning College of Information and Computer Sciences, UMass Amherst",
-    startDate: "2023-02-01",
-    endDate: "2023-12-31",
+    startDate: "2023-02",
+    endDate: "2023-12",
     location: "Amherst, Massachusetts, United States",
     description: [
       { text: "Supported course delivery by grading assignments while assisting professors with course material preparation" },
@@ -80,21 +90,20 @@ const resumeData = [
   {
     title: "Machine Learning Intern",
     institution: "AI Camp Inc.",
-    startDate: "2023-05-30",
-    endDate: "2023-08-11",
+    startDate: "2023-05",
+    endDate: "2023-08",
     location: "Palo Alto, California, United States",
     description: [
-      { text: "Engineered a proof-of-concept document chatbot using Langchain, Chroma vector database, and NeMo-Guardrails, supporting multiple file uploads as context" },
-      { text: "Led machine learning initiatives within the project team, focusing on optimizing chunking strategy and integrating external tools such as web search via SerpApi for more versatility" },
-      { text: "Mentored 10+ high school students in building machine learning applications from scratch using Python, React, and Django" },
+      { text: "Engineered a PoC RAG system, Hintings AI, for document-based QA using LangChain 🦜⛓️‍💥 and ChromaDB, awarded best RAG product among 6 development teams" },
+      { text: "Led machine learning engineering initiatives, integrating web search via SerpApi and image generation with Stable Diffusion" }
     ],
     logo: AICampLogo
   },
   {
     title: "Vice President",
     institution: "UMass Machine Learning Club",
-    startDate: "2021-05-01",
-    endDate: "2023-07-31",
+    startDate: "2021-05",
+    endDate: "2023-07",
     location: "Amherst, Massachusetts, United States",
     description: [
       { text: "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass" },
@@ -104,11 +113,12 @@ const resumeData = [
   {
     title: "Undergraduate Research Assistant",
     institution: "University of Massachusetts Amherst",
-    startDate: "2021-09-01",
-    endDate: "2022-01-31",
+    startDate: "2021-09",
+    endDate: "2022-01",
     location: "Amherst, Massachusetts, United States",
     description: [
       { text: "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group" },
+      { text: "Learned a lot about PyTorch specifically PyTorch Geometric" }
     ],
     logo: UMassLogo
   }
@@ -123,7 +133,7 @@ const sortedResumeData = [...resumeData].sort((a, b) => {
   return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
 });
 
-const Resume: React.FC = () => {
+const Resume = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -175,8 +185,8 @@ const Resume: React.FC = () => {
         {sortedResumeData.map((item, index) => (
           <div key={index} className="mb-8 flex flex-col md:flex-row items-center md:items-start">
             {item.logo && (
-              <div className="w-24 h-24 flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                <img src={item.logo} alt={`${item.institution} logo`} className="w-full h-full object-contain" />
+              <div className="w-24 h-24 flex-shrink-0 mb-4 md:mb-0 md:mr-6 rounded-lg overflow-hidden" style={{ background: darkMode ? 'rgba(255,255,255,0.10)' : 'transparent' }}>
+                <img src={item.logo} alt={`${item.institution} logo`} className="w-full h-full object-contain" style={{ background: darkMode ? 'rgba(255,255,255,0.85)' : 'transparent', borderRadius: '0.5rem' }} />
               </div>
             )}
             <div>
@@ -195,7 +205,7 @@ const Resume: React.FC = () => {
                   {item.description.map((desc, i) => (
                     <li key={i}>
                       {desc.text}
-                      {desc.link && (
+                      {desc.link && desc.link.url && desc.link.label && (
                         <a
                           href={desc.link.url}
                           target="_blank"
@@ -205,7 +215,7 @@ const Resume: React.FC = () => {
                           {desc.link.label}
                         </a>
                       )}
-                      {desc.suffix}
+                      {desc.suffix ? desc.suffix : ''}
                     </li>
                   ))}
                 </ul>
