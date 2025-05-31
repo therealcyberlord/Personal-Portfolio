@@ -1,6 +1,6 @@
 import { Headphones, Bot, TrendingUp, Activity, Code, ExternalLink, LucideIcon } from 'lucide-react';
 
-interface Project {
+type Project = {
   name: string;
   description: string;
   src_path: string;
@@ -8,11 +8,11 @@ interface Project {
   icon: LucideIcon;
 }
 
-interface ProjectCardProps {
+type ProjectCardProps = {
   project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
+const ProjectCard = ({ project }: ProjectCardProps) => (
   <div className={`transform hover:scale-[1.02] transition-all duration-300 ${project.theme}`}>
     <div className="p-6 rounded-lg shadow-lg bg-opacity-80">
       <div className="flex items-center gap-3 mb-2">
@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
   </div>
 );
 
-const Projects: React.FC = () => {
+function Projects() {
   const projects: Project[] = [
     {
       name: "Human Detection in Video and Audio",
@@ -66,7 +66,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 mt-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-6 flex items-center justify-center gap-3">
@@ -86,6 +86,6 @@ const Projects: React.FC = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Projects;

@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Github, Linkedin, Mail, NotebookText } from 'lucide-react';
 
-interface ProfileProps {
+type ProfileProps = {
   name: string;
   description: string;
   img_path: string;
   role: string;
 }
 
-const Profile: React.FC<ProfileProps> = ({
+const Profile = ({
   name,
   description,
   img_path,
-  role,
-}) => {
+  role
+}: ProfileProps) => {
   const [typedText, setTypedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
