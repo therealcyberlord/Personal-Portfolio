@@ -44,8 +44,7 @@ const resumeData: Array<{
     endDate: "Present",
     location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "Agents, AI workflows, Retrieval Augmented Generation, and full-stack development" },
-      { text: "I work on experimental AI features, piloting new technologies, and build full-stack features for both internal and external needs"}
+      { text: "Building generative AI features for the life sciences, focusing on agentic workflows, RAG pipelines, and full-stack implementation"}
     ],
     logo: Trinitylogo
   },
@@ -56,9 +55,8 @@ const resumeData: Array<{
     endDate: "2024-08",
     location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "Architected a production-ready evaluation system for a biopharma-focused RAG platform, using LlamaIndex 🦙 and Litestar to build performant endpoints on a python-based microservice" },
-      { text: "Boosted hybrid search relevance by 50%, improving LLM understanding of industry and company-specific lingo using a custom approach" },
-      { text: "Hired as the first AI/ML intern in company history" }
+      { text: "Hired as the first intern; integrated AI-driven features into products for both internal teams and external clients" },
+      { text: "Improved retrieval relevance by 50% in a production RAG system by integrating external APIs, performing targeted" },
     ],
     logo: Trinitylogo
   },
@@ -69,9 +67,9 @@ const resumeData: Array<{
     endDate: "2025-01",
     location: "Amherst, Massachusetts, United States",
     description: [
-      { text: "Conducted NLP research in retrieval-augmented generation (RAG), agentic patterns, test-time compute, and LLM evaluation incorporating human experts in the loop" },
-      { text: "Contributed to the design of agentic patterns that enhance reasoning across medical benchmarks of varying difficulty levels by identifying compute-optimal settings for scaling" },
-      { text: "Fine-tuned custom judge models for medical education via knowledge distillation from foundational models (Qwen, LLaMA) using QLoRA with UnSloth 🦥 and Hugging Face Transformers 🤗, deployed with VLLM for inference" }
+      { text: "Researched clinical reasoning optimization using Retrieval-Augmented Generation (RAG), test-time compute scaling, and human-in-the-loop evaluation" },
+      { text: "Implemented agentic design patterns to boost reasoning performance on medical benchmarks by identifying compute-optimal scaling strategies" },
+      { text: "Trained lightweight judge models using UnSloth on GPU clusters to evaluate USMLE QA outputs, achieving 93% correlation with human evaluations" }
     ],
     logo: CICSlogo
   },
@@ -94,8 +92,8 @@ const resumeData: Array<{
     endDate: "2023-08",
     location: "Palo Alto, California, United States",
     description: [
-      { text: "Engineered a PoC RAG system, Hintings AI, for document-based QA using LangChain 🦜⛓️‍💥 and ChromaDB, awarded best RAG product among 6 development teams" },
-      { text: "Led machine learning engineering initiatives, integrating web search via SerpApi and image generation with Stable Diffusion" }
+      { text: "Built tool-calling RAG system with LangChain + Chroma, added NeMo guardrails for safer response generation and alignment with intended objectives" },
+      { text: "Mentored 10+ students through end-to-end ML projects, guiding use of scikit-learn, pandas, and PyTorch" }
     ],
     logo: AICampLogo
   },
