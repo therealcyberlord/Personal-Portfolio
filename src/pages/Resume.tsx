@@ -1,20 +1,11 @@
 import { useState } from 'react';
 import { Sun, Moon } from "lucide-react";
-import Trinitylogo from "../../public/images/logos/Trinity.png";
-import CICSlogo from "../../public/images/logos/CICS.jpeg";
-import AICampLogo from "../../public/images/logos/AICamp.png";
-import ACMMLLogo from "../../public/images/logos/ACMML.jpeg";
-import UMassLogo from "../../public/images/logos/UMass.png";
-
-const calculateDuration = (start: string, end: string): string => {
-  const startDate = new Date(start);
-  const endDate = end === "Present" ? new Date() : new Date(end);
-  const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
-  const years = Math.floor(months / 12);
-  const remainingMonths = months % 12;
-
-  return `${years > 0 ? `${years} year${years > 1 ? "s" : ""} ` : ""}${remainingMonths > 0 ? `${remainingMonths} month${remainingMonths > 1 ? "s" : ""}` : ""}`.trim();
-};
+import Trinitylogo from "/images/logos/Trinity.png";
+import CICSlogo from "/images/logos/CICS.jpeg";
+import AICampLogo from "/images/logos/AICamp.png";
+import ACMMLLogo from "/images/logos/ACMML.jpeg";
+import UMassLogo from "/images/logos/UMass.png";
+import { calculateDuration } from "@/utils/time";
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString + 'T12:00:00Z');

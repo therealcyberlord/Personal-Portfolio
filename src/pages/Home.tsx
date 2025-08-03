@@ -1,6 +1,6 @@
 import { Code, Database, Cloud, Rocket } from 'lucide-react';
-import Profile from "../components/Profile";
-import Picture from "../../public/images/profile.jpg"
+import Profile from "@/components/Profile";
+import Picture from "/images/profile.jpg"
 
 const Home = () => {
   const technologies = [
