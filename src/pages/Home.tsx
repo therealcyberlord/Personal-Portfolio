@@ -32,7 +32,7 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       <Profile
         name="Xingyu Bian"
-        description="I received my Master's degree in Computer Science from UMass Amherst. I am passionate about software engineering, machine learning, and have hands-on experience with AI research in the biomedical domain."
+        description="I'm a software engineer with an M.S. in Computer Science from UMass Amherst, focused on building AI-powered, user-centric systems. I've developed and deployed production-scale generative AI features with real business impact. My research spans biomedical NLP, clinical reasoning, and LLM evaluation."
         img_path={Picture}
         role="Software Engineer, AI Researcher, Lifelong Learner"
       />
@@ -44,7 +44,7 @@ const Home = () => {
             <h3 className="text-xl font-semibold text-white">Built Using</h3>
           </div>
           <div className="flex flex-wrap justify-center gap-4 mb-4">
-            {technologies.map((tech) => (
+            {technologies.map(tech => (
               <div
                 key={tech.name}
                 className={`px-4 py-2 rounded-full bg-gray-800 border border-gray-700 ${tech.color} font-medium hover:scale-105 transition-transform duration-300`}
@@ -71,7 +71,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skillCategories.map((category) => (
+            {skillCategories.map(category => (
               <div key={category.title} className="bg-gray-800 rounded-xl p-6 transform hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl border border-gray-700">
                 <div className="text-center">
                   <div className="flex justify-center text-sky-400">
@@ -81,7 +81,7 @@ const Home = () => {
                     {category.title}
                   </h3>
                   <div className="space-y-3">
-                    {category.skills.map((skill) => (
+                    {category.skills.map(skill => (
                       <div
                         key={skill}
                         className="bg-gray-700 text-gray-100 py-2 px-4 rounded-lg hover:bg-sky-600 transition-colors duration-300"

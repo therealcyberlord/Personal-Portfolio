@@ -17,26 +17,27 @@ const calculateDuration = (start: string, end: string): string => {
 };
 
 const formatDate = (dateString: string): string => {
-  const date = new Date(dateString + 'T12:00:00Z'); // Force to midday UTC to avoid timezone issues
+  const date = new Date(dateString + 'T12:00:00Z');
   const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "short" };
   return date.toLocaleDateString(undefined, options);
 };
 
-interface DescriptionItem {
+type DescriptionItem = {
   text: string;
   link?: { url: string; label: string };
-  suffix?: string;
 }
 
-const resumeData: Array<{
+type ResumeExperience = {
   title: string;
   institution: string;
-  startDate: string; // Format: YYYY-MM
-  endDate: string;   // Format: YYYY-MM or 'Present'
+  startDate: string;
+  endDate: string;
   location: string;
   description: DescriptionItem[];
   logo: string;
-}> = [
+}
+
+const resumeData: ResumeExperience[] = [
   {
     title: "Software Engineer",
     institution: "Trinity Life Sciences",
@@ -44,7 +45,9 @@ const resumeData: Array<{
     endDate: "Present",
     location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "Building generative AI features for the life sciences, focusing on agentic workflows, RAG pipelines, and full-stack implementation"}
+      { text: "Build and maintain scalable full-stack features for pharma platforms with 1,000+ monthly active users"},
+      { text: "Implement agentic workflows using Pydantic/Zod and Llamalndex to generate interactive visualizations (e.g., bar, pie, line charts) from natural language queries over quantitative clinical data, enabling informed decision-making"},
+      { text: "Build and ship generative Al features end-to-end, from concept to production, directly driving $200K+ in revenue within 3 months"}
     ],
     logo: Trinitylogo
   },
@@ -125,6 +128,7 @@ const resumeData: Array<{
 const sortedResumeData = [...resumeData].sort((a, b) => {
   if (a.endDate === "Present" && b.endDate !== "Present") return -1;
   if (a.endDate !== "Present" && b.endDate === "Present") return 1;
+
   if (a.endDate === b.endDate) {
     return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
   }
@@ -213,7 +217,6 @@ const Resume = () => {
                           {desc.link.label}
                         </a>
                       )}
-                      {desc.suffix ? desc.suffix : ''}
                     </li>
                   ))}
                 </ul>

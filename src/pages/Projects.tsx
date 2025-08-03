@@ -1,4 +1,4 @@
-import { Headphones, Bot, TrendingUp, Activity, Code, ExternalLink, LucideIcon } from 'lucide-react';
+import { Headphones, Bot, TrendingUp, Activity, Code, ExternalLink, LucideIcon, BrainCircuit } from 'lucide-react';
 
 type Project = {
   name: string;
@@ -13,18 +13,18 @@ type ProjectCardProps = {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => (
-  <div className={`transform hover:scale-[1.02] transition-all duration-300 ${project.theme}`}>
-    <div className="p-6 rounded-lg shadow-lg bg-opacity-80">
-      <div className="flex items-center gap-3 mb-2">
-        <project.icon className="w-6 h-6 text-white" />
-        <h3 className="text-2xl text-white font-semibold">{project.name}</h3>
-      </div>
-      <p className="text-lg text-gray-100 mt-4">{project.description}</p>
+  <div className={`bg-gray-800 rounded-xl p-6 border border-gray-700 flex flex-col h-full`}>
+    <div className="flex items-center gap-3 mb-4">
+      <project.icon className={`w-8 h-8 ${project.theme}`} />
+      <h3 className="text-2xl text-white font-semibold">{project.name}</h3>
+    </div>
+    <p className="text-lg text-gray-300 mb-4">{project.description}</p>
+    <div className="mt-auto">
       <a
         href={project.src_path}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 mt-4 text-sky-500 hover:text-sky-400 transition-colors text-lg"
+        className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-lg font-medium"
       >
         View Project
         <ExternalLink className="w-5 h-5" />
@@ -36,33 +36,40 @@ const ProjectCard = ({ project }: ProjectCardProps) => (
 function Projects() {
   const projects: Project[] = [
     {
+      name: "COVID Exploratory Data Analysis",
+      description: "Created an interactive data visualization notebook to help users explore the global impact of COVID-19. I began the project during my senior year of high school and continuously expanded it throughout college, adding features like country-level breakdowns and multiple chart types (line, bar, and pie). Now one of the most popular notebooks in Kaggle’s health category, it has received 550,000+ views and 10,000+ forks",
+      src_path: "https://www.kaggle.com/code/therealcyberlord/coronavirus-covid-19-visualization-prediction",
+      theme: "text-yellow-400",
+      icon: Activity,
+    },
+    {
+      name: "MindSLM",
+      description: "MindSLM is a privacy-centric framework for deploying small language models (SLMs) specifically designed to support mental health therapy applications. It provides tools for training, evaluating, and benchmarking models. The project includes a training workflow using UnSloth, traditional evaluation scripts with metrics like RougeL and BERTScore, and advanced evaluation via LLM-as-a-judge",
+      src_path: "https://github.com/therealcyberlord/MindSLM", 
+      theme: "text-sky-400",
+      icon: BrainCircuit,
+    },
+    {
       name: "Human Detection in Video and Audio",
-      description: "This project implements an end-to-end solution for human detection in video and audio, leveraging advanced machine learning models to identify faces and process audio. The application is designed to assist law enforcement by improving child rescue operations with more accurate and timely identification. This is affiliated with the UMass Rescue Lab through the independent study: Machine Learning Applied to Child Rescue.",
+      description: "As part of a Machine Learning for Child Rescue independent study, this project used DETR ResNet-50 and Whisper models from Hugging Face Transformers to detect unique faces and process audio from video sources, aiding law enforcement in child rescue operations. I developed a custom audio pipeline that integrated Whisper, Pyannote Audio, and RoBERTa to perform diarized transcription with sentiment analysis, deployed via FastAPI for real-time speaker identification and dialogue transcription",
       src_path: "https://github.com/apoorvasaraswat5/HumanDetection",
-      theme: "bg-gradient-to-r from-gray-700 to-gray-800",
-      icon: Headphones
+      theme: "text-red-400",
+      icon: Headphones,
     },
     {
       name: "Hintings AI",
-      description: "Hintings is an intelligent document chatbot that allows users to upload multiple files for context. It integrates seamlessly with external tools like SerpApi for web search and Hugging Face for image generation, offering a dynamic and comprehensive experience. Built during the summer of 2023 at AI Camp by a team of four, it won the award for Best Product among all interns.",
+      description: "Hintings is a RAG system that allows users to ask questions over their uploaded documents. It integrates with external APIs such as SerpApi for web search and Hugging Face for image generation. Built with LangChain and Chroma, and enhanced with NeMo Guardrails for safer, more aligned responses. Developed by a team of four during Summer 2023 at AI Camp, Hintings was recognized as the Best Product among all intern projects",
       src_path: "https://github.com/tjpel/HinTinGs",
-      theme: "bg-gradient-to-r from-gray-600 to-gray-700",
-      icon: Bot
+      theme: "text-blue-400",
+      icon: Bot,
     },
     {
       name: "StockExpert.io",
-      description: "StockExpert.io is an intuitive web application designed to help users track stock portfolios, create personalized watchlists, access real-time market data, visualize stock trends, and analyze sentiment to make informed investment decisions.",
+      description: "StockExpert.io is an intuitive web application designed to help users track stock portfolios, create personalized watchlists, access real-time market data, visualize stock trends, and analyze sentiment to make informed investment decisions",
       src_path: "https://github.com/therealcyberlord/StockExpert.io",
-      theme: "bg-gradient-to-r from-green-500 to-green-600",
-      icon: TrendingUp
+      theme: "text-green-400",
+      icon: TrendingUp,
     },
-    {
-      name: "COVID Exploratory Data Analysis",
-      description: "This data science project offers a comprehensive analysis of the COVID-19 pandemic's impact. It started as a hobby project during my senior year of high school to raise awareness about COVID-19 when the pandemic first began. Since then, it has become the most upvoted health-related publication on Kaggle, with over 500K views, providing valuable insights through interactive visualizations and analysis.",
-      src_path: "https://www.kaggle.com/code/therealcyberlord/coronavirus-covid-19-visualization-prediction",
-      theme: "bg-gradient-to-r from-gray-600 to-gray-700",
-      icon: Activity
-    }
   ];
 
   return (
@@ -73,14 +80,15 @@ function Projects() {
             My Projects
             <Code className="w-8 h-8" />
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A showcase of my work in machine learning, web development, and data science
+          <p className="text-xl font-semibold text-sky-300">
+            Showcase of my Personal Projects
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
+
           ))}
         </div>
       </div>
