@@ -1,27 +1,92 @@
-# React + TypeScript + Vite
+# Xingyu's Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React, TypeScript, and Vite, deployed automatically to GitHub Pages using GitHub Actions.
 
-Currently, two official plugins are available:
+## 🌐 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visit the live site at: [https://xingyubian.com](https://xingyubian.com)
 
-## Expanding the ESLint configuration
+## 🚀 Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React** - JavaScript library for building user interfaces
+- **TypeScript** - Typed superset of JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Icons** - Popular icon library for React
+- **Lucide React** - Beautiful & consistent icons
+- **React Router** - Declarative routing for React
+- **GitHub Pages** - Hosting platform
+- **GitHub Actions** - CI/CD automation
 
-- Configure the top-level `parserOptions` property like this:
+## 📁 Project Structure
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+├── src/
+│   ├── components/   # Reusable UI components (Nav, Profile)
+│   ├── pages/        # Page components (Home, Projects, Resume)
+│   ├── assets/       # Images and static assets
+│   ├── utils/        # Utility functions
+│   ├── App.tsx       # Main application component
+│   └── main.tsx      # Entry point
+├── public/           # Static assets (images, favicon)
+├── dist/             # Production build (generated)
+└── .github/workflows/# GitHub Actions workflows
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🛠️ Development Setup
+
+### Prerequisites
+
+- Node.js 22.x (LTS)
+- npm (comes with Node.js)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/Personal-Portfolio.git
+
+# Navigate to the project directory
+cd Personal-Portfolio
+
+# Install dependencies
+npm install
+```
+
+### Development
+
+```bash
+# Start the development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## 🚀 Deployment
+
+This site is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `main` branch.
+
+The deployment workflow includes:
+
+- Building the React application with Vite
+- Adding a `.nojekyll` file to prevent GitHub Pages from processing the site with Jekyll
+- Deploying to GitHub Pages with proper MIME type handling
+
+## 🤝 Contributing
+
+This is a personal portfolio site, so contributions aren't expected. However, if you find any issues or have suggestions, feel free to open an issue.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- [Vite](https://vitejs.dev/) for the amazing build tool
+- [React](https://reactjs.org/) for the UI library
+- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
+- [GitHub Pages](https://pages.github.com/) for free hosting
