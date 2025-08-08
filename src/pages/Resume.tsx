@@ -49,8 +49,9 @@ const resumeData: ResumeExperience[] = [
     endDate: "2024-08",
     location: "Greater Boston, Massachusetts, United States",
     description: [
-      { text: "Hired as the first intern; integrated AI-driven features into products for both internal teams and external clients" },
-      { text: "Improved retrieval relevance by 50% in a production RAG system by integrating external APIs, performing targeted" },
+      { "text": "Selected as the first intern; integrated AI-driven features into products for both internal teams and external clients" },
+      { "text": "Boosted retrieval relevance by 50% in a production RAG system by integrating external APIs, optimizing SQL lookups, and implementing advanced query rewriting for improved domain-specific understanding" },
+      { "text": "Developed a robust LLM evaluation endpoint using LlamaIndex and Litestar, enabling real-time performance benchmarking and automated generation of detailed evaluation reports" }
     ],
     logo: Trinitylogo
   },
@@ -81,7 +82,7 @@ const resumeData: ResumeExperience[] = [
   },
   {
     title: "Machine Learning Intern",
-    institution: "AI Camp Inc.",
+    institution: "AI Camp Inc. (Ed-tech startup)",
     startDate: "2023-05",
     endDate: "2023-08",
     location: "Palo Alto, California, United States",
@@ -127,7 +128,7 @@ const sortedResumeData = [...resumeData].sort((a, b) => {
 });
 
 const Resume = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
