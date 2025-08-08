@@ -6,7 +6,7 @@ import Navbar from "@/components/Nav";
 
 function App() {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen font-sans">
       <Router>
         <Navbar />
         <Routes>

@@ -175,7 +175,7 @@ const Resume = () => {
           </button>
          
         </div>
-        <h1 className={`text-4xl font-bold text-center mb-8 ${headingClasses}`}>My Resume</h1>
+        <h1 className={`text-4xl font-bold text-center mb-8 ${headingClasses} tracking-tighter`}>My Resume</h1>
         {sortedResumeData.map((item, index) => (
           <div key={index} className="mb-8 flex flex-col md:flex-row items-center md:items-start">
             {item.logo && (
@@ -184,9 +184,9 @@ const Resume = () => {
               </div>
             )}
             <div>
-              <h2 className={`text-2xl font-semibold ${headingClasses}`}>{item.title}</h2>
-              <h3 className={`text-xl ${subheadingClasses}`}>{item.institution}</h3>
-              <p className={`text-sm ${metaClasses}`}>
+              <h2 className={`text-2xl font-bold ${headingClasses} tracking-tighter`}>{item.title}</h2>
+              <h3 className={`text-xl font-semibold ${subheadingClasses} tracking-tighter`}>{item.institution}</h3>
+              <p className={`text-sm ${metaClasses} font-medium tracking-tight`}>
                 {formatDate(item.startDate)} - {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
                 {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
                   ? ` (${calculateDuration(item.startDate, item.endDate)})`
@@ -195,9 +195,9 @@ const Resume = () => {
               </p>
 
               {item.description && (
-                <ul className={`list-disc list-inside mt-2 ${descriptionClasses}`}>
+                <ul className={`list-disc list-inside mt-2 ${descriptionClasses} space-y-1`}>
                   {item.description.map((desc, i) => (
-                    <li key={i}>
+                    <li key={i} className="leading-relaxed tracking-tight">
                       {desc.text}
                       {desc.link && desc.link.url && desc.link.label && (
                         <a

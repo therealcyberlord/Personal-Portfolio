@@ -1,3 +1,110 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Base typography styles */
+  html {
+    font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 
+      'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  h6 {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  /* Paragraphs */
+  p {
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+  }
+  
+  /* Animations */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  /* Custom typography utilities */
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+  
+  .tracking-tighter {
+    letter-spacing: -0.05em;
+  }
+}
