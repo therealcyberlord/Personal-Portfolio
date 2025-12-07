@@ -68,13 +68,8 @@ npm run preview
 
 ## 🚀 Deployment
 
-This site is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `main` branch.
+This site is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `main` branch. Please checkout the github workflow for more information.
 
-The deployment workflow includes:
-
-- Building the React application with Vite
-- Adding a `.nojekyll` file to prevent GitHub Pages from processing the site with Jekyll
-- Deploying to GitHub Pages with proper MIME type handling
 
 ## 🤝 Contributing
 
