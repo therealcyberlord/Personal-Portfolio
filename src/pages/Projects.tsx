@@ -37,7 +37,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <h3 className="text-2xl text-white font-bold tracking-tighter">{project.name}</h3>
       </div>
       
-      <p className="text-lg text-gray-300 mb-4 flex-grow leading-relaxed tracking-tight">{project.description}</p>
+      <p className="text-lg text-gray-300 mb-4 grow leading-relaxed tracking-tight">{project.description}</p>
       
       {/* Project stats if available */}
       {project.stats && (

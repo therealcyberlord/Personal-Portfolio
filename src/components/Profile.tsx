@@ -41,7 +41,7 @@ const Profile = ({
 
   return (
     <div className="relative overflow-hidden py-24 px-4">
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-gray-900/20 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-linear-to-br from-sky-900/20 to-gray-900/20 backdrop-blur-xs" />
       
       <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col items-center">

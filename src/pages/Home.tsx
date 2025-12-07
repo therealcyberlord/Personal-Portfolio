@@ -29,7 +29,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <div className="min-h-screen bg-linear-to-b from-gray-900 to-gray-800">
       <Profile
         name="Xingyu Bian"
         description="I'm a software engineer with an M.S. in Computer Science from UMass Amherst, focused on building AI-powered, user-centric systems. I've developed and deployed production-scale generative AI features with real business impact. My research spans biomedical NLP, clinical reasoning, and LLM evaluation."
@@ -38,7 +38,7 @@ const Home = () => {
       />
 
       <div className="max-w-4xl mx-auto px-4 mt-12">
-        <div className="bg-gray-800/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-700">
+        <div className="bg-gray-800/50 rounded-2xl p-6 backdrop-blur-xs border border-gray-700">
           <div className="flex items-center justify-center mb-4">
             <Rocket className="w-6 h-6 text-sky-400 mr-2" />
             <h3 className="text-xl font-semibold text-white tracking-tighter">Built Using</h3>

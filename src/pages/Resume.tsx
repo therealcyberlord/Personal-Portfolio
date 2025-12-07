@@ -179,7 +179,7 @@ const Resume = () => {
         {sortedResumeData.map((item, index) => (
           <div key={index} className="mb-8 flex flex-col md:flex-row items-center md:items-start">
             {item.logo && (
-              <div className="w-24 h-24 flex-shrink-0 mb-4 md:mb-0 md:mr-6 rounded-lg overflow-hidden" style={{ background: darkMode ? 'rgba(255,255,255,0.10)' : 'transparent' }}>
+              <div className="w-24 h-24 shrink-0 mb-4 md:mb-0 md:mr-6 rounded-lg overflow-hidden" style={{ background: darkMode ? 'rgba(255,255,255,0.10)' : 'transparent' }}>
                 <img src={item.logo} alt={`${item.institution} logo`} className="w-full h-full object-contain" style={{ background: darkMode ? 'rgba(255,255,255,0.85)' : 'transparent', borderRadius: '0.5rem' }} />
               </div>
             )}
