@@ -34,37 +34,36 @@ const resumeData: ResumeExperience[] = [
     institution: "Trinity Life Sciences",
     startDate: "2025-01",
     endDate: "Present",
-    location: "Greater Boston, Massachusetts, United States",
+    location: "Greater Boston, MA",
     description: [
-      { text: "Build and maintain scalable full-stack features for pharma platforms with 1,000+ monthly active users"},
-      { text: "Implement agentic workflows using Pydantic/Zod and Llamalndex to generate interactive visualizations (e.g., bar, pie, line charts) from natural language queries over quantitative clinical data, enabling informed decision-making"},
-      { text: "Build and ship generative Al features end-to-end, from concept to production, directly driving $200K+ in revenue within 3 months"}
+      { text: "Lead development of a quantitative analytics platform, generating $200K+ in new revenue within the first three months by iterating on user feedback and shipping high-impact features" },
+      { text: "Build and maintain scalable full-stack systems, supporting 1,000+ monthly active users across enterprise clients and internal teams using React, Node.js, Python, PostgreSQL, and Sentry" },
+      { text: "Design AI workflows to automate insight extraction and visualization from structured clinical data, minimizing manual data analysis leveraging Azure OpenAI, Pydantic/Zod, and LlamaIndex" }
     ],
     logo: Trinitylogo
   },
   {
-    title: "Generative AI Intern, Trinity Life Sciences",
+    title: "AI Engineer Intern (First Intern Hire)",
     institution: "Trinity Life Sciences",
     startDate: "2024-06",
     endDate: "2024-08",
-    location: "Greater Boston, Massachusetts, United States",
+    location: "Greater Boston, MA",
     description: [
-      { "text": "Selected as the first intern; integrated AI-driven features into products for both internal teams and external clients" },
-      { "text": "Boosted retrieval relevance by 50% in a production RAG system by integrating external APIs, optimizing SQL lookups, and implementing advanced query rewriting for improved domain-specific understanding" },
-      { "text": "Developed a robust LLM evaluation endpoint using LlamaIndex and Litestar, enabling real-time performance benchmarking and automated generation of detailed evaluation reports" }
+      { text: "Optimized enterprise RAG systems, improving retrieval relevance by 50% via hybrid search and query rewriting using Weaviate, spaCy, and PostgreSQL" },
+      { text: "Engineered a dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar" }
     ],
     logo: Trinitylogo
   },
   {
-    title: "AI Researcher, UMass BioNLP Lab",
+    title: "NLP Researcher, UMass BioNLP Lab",
     institution: "Manning College of Information and Computer Sciences, UMass Amherst",
     startDate: "2024-02",
     endDate: "2025-01",
-    location: "Amherst, Massachusetts, United States",
+    location: "Amherst, MA",
     description: [
-      { text: "Researched clinical reasoning optimization using Retrieval-Augmented Generation (RAG), test-time compute scaling, and human-in-the-loop evaluation" },
-      { text: "Implemented agentic design patterns to boost reasoning performance on medical benchmarks by identifying compute-optimal scaling strategies" },
-      { text: "Trained lightweight judge models using UnSloth on GPU clusters to evaluate USMLE QA outputs, achieving 93% correlation with human evaluations" }
+      { text: "Researched RAG grounded on medical datasets, test-time compute scaling, and LLM evaluation" },
+      { text: "Implemented agentic design patterns (planning, reflection, tool-use) to improve reasoning on challenging benchmarks with compute-optimal scaling strategies" },
+      { text: "Trained judge models on GPU clusters and leveraged VLLM for batch inference to evaluate patient encounter simulations, achieving 93% correlation with human evaluations using PEFT" }
     ],
     logo: CICSlogo
   },
@@ -85,10 +84,10 @@ const resumeData: ResumeExperience[] = [
     institution: "AI Camp Inc. (Ed-tech startup)",
     startDate: "2023-05",
     endDate: "2023-08",
-    location: "Palo Alto, California, United States",
+    location: "Palo Alto, CA",
     description: [
-      { text: "Built tool-calling RAG system with LangChain + Chroma, added NeMo guardrails for safer response generation and alignment with intended objectives" },
-      { text: "Mentored 10+ students through end-to-end ML projects, guiding use of scikit-learn, pandas, and PyTorch" }
+      { text: "Developed a PoC RAG application, earning the Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails" },
+      { text: "Mentored 10+ students on machine learning and web development fundamentals using Scikit-Learn, Transformers, and Flask" }
     ],
     logo: AICampLogo
   },
@@ -134,12 +133,12 @@ const Resume = () => {
     setDarkMode(!darkMode);
   };
 
-  const baseClasses = darkMode ? 
-    "bg-gray-900 text-white transition-colors duration-300" : 
+  const baseClasses = darkMode ?
+    "bg-gray-900 text-white transition-colors duration-300" :
     "bg-gray-100 text-gray-800 transition-colors duration-300";
 
-  const cardClasses = darkMode ? 
-    "bg-gray-800 shadow-lg" : 
+  const cardClasses = darkMode ?
+    "bg-gray-800 shadow-lg" :
     "bg-white shadow-lg";
 
   const buttonClasses = darkMode ?
@@ -173,7 +172,7 @@ const Resume = () => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
           </button>
-         
+
         </div>
         <h1 className={`text-4xl font-bold text-center mb-8 ${headingClasses} tracking-tighter`}>My Resume</h1>
         {sortedResumeData.map((item, index) => (
