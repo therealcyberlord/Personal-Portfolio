@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Sun, Moon } from "lucide-react";
+import { Briefcase } from "lucide-react";
 import Trinitylogo from "/images/logos/Trinity.png";
 import CICSlogo from "/images/logos/CICS.jpeg";
 import AICampLogo from "/images/logos/AICamp.png";
@@ -13,18 +12,13 @@ const formatDate = (dateString: string): string => {
   return date.toLocaleDateString(undefined, options);
 };
 
-type DescriptionItem = {
-  text: string;
-  link?: { url: string; label: string };
-}
-
 type ResumeExperience = {
   title: string;
   institution: string;
   startDate: string;
   endDate: string;
   location: string;
-  description: DescriptionItem[];
+  description: string[];
   logo: string;
 }
 
@@ -36,9 +30,9 @@ const resumeData: ResumeExperience[] = [
     endDate: "Present",
     location: "Greater Boston, MA",
     description: [
-      { text: "Lead development of a quantitative analytics platform from 0 to 1, generating $200K+ in new revenue within the first 90 days by iterating on user feedback and shipping business-critical features" },
-      { text: "Design and ship agentic workflows to automatically query life sciences market research data, generate visualizations, and extract insights using Azure OpenAI, LlamaIndex, and Langfuse for observability" },
-      { text: "Build and deploy full-stack features (React, Koa.js, Python, PostgreSQL) serving 1,000+ monthly active users across enterprise clients and internal analysts, monitored with Sentry" }
+      "Lead development of a quantitative analytics platform from 0 to 1, generating $200K+ in new revenue within the first 90 days by iterating on user feedback and shipping business-critical features",
+      "Design and ship agentic workflows to automatically query life sciences market research data, generate visualizations, and extract insights using Azure OpenAI, LlamaIndex, and Langfuse for observability",
+      "Build and deploy full-stack features (React, Koa.js, Python, PostgreSQL) serving 1,000+ monthly active users across enterprise clients and internal analysts, monitored with Sentry"
     ],
     logo: Trinitylogo
   },
@@ -49,10 +43,10 @@ const resumeData: ResumeExperience[] = [
     endDate: "2025-01",
     location: "Amherst, MA",
     description: [
-      { text: "Co-authored research paper (MedQA-CS benchmark) on LLM evaluation accepted at EACL 2026" },
-      { text: "Researched Medical RAG systems using agentic design and test-time scaling to solve challenging benchmarks in the healthcare domain" },
-      { text: "Fine-tuned judge models via PEFT, achieving 93% correlation with human experts in scoring multi-turn patient-doctor simulations" },
-      { text: "Delivered high-throughput inference via vLLM, enabling batch processing for large-scale experiments" }
+      "Co-authored research paper (MedQA-CS benchmark) on LLM clinical skills evaluation accepted at EACL 2025",
+      "Researched Medical RAG systems using agentic design and test-time scaling to solve challenging benchmarks in the healthcare domain",
+      "Fine-tuned judge models via PEFT, achieving 93% correlation with human experts in scoring multi-turn patient-doctor simulations",
+      "Delivered high-throughput inference via vLLM, enabling batch processing for large-scale experiments"
     ],
     logo: CICSlogo
   },
@@ -63,8 +57,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2024-08",
     location: "Greater Boston, MA",
     description: [
-      { text: "Optimized enterprise RAG systems, improving retrieval relevance by 50% via hybrid search and query rewriting using Weaviate, spaCy, and PostgreSQL" },
-      { text: "Engineered dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar" }
+      "Optimized enterprise RAG systems, improving retrieval relevance by 50% via hybrid search and query rewriting using Weaviate, spaCy, and PostgreSQL",
+      "Engineered dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar"
     ],
     logo: Trinitylogo
   },
@@ -75,7 +69,7 @@ const resumeData: ResumeExperience[] = [
     endDate: "2023-08",
     location: "Palo Alto, CA",
     description: [
-      { text: "Delivered proof-of-concept RAG application, earning Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails" }
+      "Delivered proof-of-concept RAG application, earning Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails"
     ],
     logo: AICampLogo
   },
@@ -86,8 +80,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2023-12",
     location: "Amherst, MA",
     description: [
-      { text: "Supported course delivery by grading assignments while assisting professors with course material preparation" },
-      { text: "Provided guidance to students in courses: CS 389 (Introduction to Machine Learning) and CS 383 (Artificial Intelligence)" }
+      "Supported course delivery by grading assignments while assisting professors with course material preparation",
+      "Provided guidance to students in courses: CS 389 (Introduction to Machine Learning) and CS 383 (Artificial Intelligence)"
     ],
     logo: CICSlogo
   },
@@ -98,7 +92,7 @@ const resumeData: ResumeExperience[] = [
     endDate: "2023-07",
     location: "Amherst, MA",
     description: [
-      { text: "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass" }
+      "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass"
     ],
     logo: ACMMLLogo
   },
@@ -109,8 +103,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2022-01",
     location: "Amherst, MA",
     description: [
-      { text: "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group" },
-      { text: "Learned a lot about PyTorch specifically PyTorch Geometric" }
+      "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group",
+      "Learned a lot about PyTorch specifically PyTorch Geometric"
     ],
     logo: UMassLogo
   }
@@ -127,94 +121,79 @@ const sortedResumeData = [...resumeData].sort((a, b) => {
 });
 
 const Resume = () => {
-  const [darkMode, setDarkMode] = useState(true);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  const baseClasses = darkMode ?
-    "bg-gray-900 text-white transition-colors duration-300" :
-    "bg-gray-100 text-gray-800 transition-colors duration-300";
-
-  const cardClasses = darkMode ?
-    "bg-gray-800 shadow-lg" :
-    "bg-white shadow-lg";
-
-  const buttonClasses = darkMode ?
-    "text-gray-300 hover:text-white border-gray-600 hover:border-gray-400" :
-    "text-gray-600 hover:text-gray-800 border-gray-300 hover:border-gray-400";
-
-  const headingClasses = darkMode ?
-    "text-white" :
-    "text-gray-800";
-
-  const subheadingClasses = darkMode ?
-    "text-gray-300" :
-    "text-gray-600";
-
-  const metaClasses = darkMode ?
-    "text-gray-400" :
-    "text-gray-500";
-
-  const descriptionClasses = darkMode ?
-    "text-gray-300" :
-    "text-gray-700";
-
   return (
-    <div className={`min-h-screen py-12 px-6 sm:px-8 lg:px-24 ${baseClasses}`}>
-      <div className={`max-w-4xl mx-auto p-8 rounded-lg ${cardClasses}`}>
-        <div className="flex justify-end mb-4 space-x-4">
-          <button
-            onClick={toggleDarkMode}
-            className={`flex items-center space-x-2 px-4 py-2 border rounded-md transition-all duration-300 ${buttonClasses}`}
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
-          </button>
-
-        </div>
-        <h1 className={`text-4xl font-bold text-center mb-8 ${headingClasses} tracking-tighter`}>My Resume</h1>
-        {sortedResumeData.map((item, index) => (
-          <div key={index} className="mb-8 flex flex-col md:flex-row items-center md:items-start">
-            {item.logo && (
-              <div className="w-24 h-24 shrink-0 mb-4 md:mb-0 md:mr-6 rounded-lg overflow-hidden" style={{ background: darkMode ? 'rgba(255,255,255,0.10)' : 'transparent' }}>
-                <img src={item.logo} alt={`${item.institution} logo`} className="w-full h-full object-contain" style={{ background: darkMode ? 'rgba(255,255,255,0.85)' : 'transparent', borderRadius: '0.5rem' }} />
-              </div>
-            )}
-            <div>
-              <h2 className={`text-2xl font-bold ${headingClasses} tracking-tighter`}>{item.title}</h2>
-              <h3 className={`text-xl font-semibold ${subheadingClasses} tracking-tighter`}>{item.institution}</h3>
-              <p className={`text-sm ${metaClasses} font-medium tracking-tight`}>
-                {formatDate(item.startDate)} - {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
-                {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
-                  ? ` (${calculateDuration(item.startDate, item.endDate)})`
-                  : ""}
-                - {item.location}
-              </p>
-
-              {item.description && (
-                <ul className={`list-disc list-inside mt-2 ${descriptionClasses} space-y-1`}>
-                  {item.description.map((desc, i) => (
-                    <li key={i} className="leading-relaxed tracking-tight">
-                      {desc.text}
-                      {desc.link && desc.link.url && desc.link.label && (
-                        <a
-                          href={desc.link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`${darkMode ? 'text-blue-400' : 'text-blue-500'} underline`}
-                        >
-                          {desc.link.label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+    <div className="min-h-screen bg-gray-900 pt-24 pb-16 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/30 mb-4">
+            <Briefcase className="w-4 h-4 text-sky-400" />
+            <span className="text-sky-400 font-medium text-sm tracking-tight">Experience</span>
           </div>
-        ))}
+          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-4">
+            Resume
+          </h1>
+          <p className="text-gray-400 max-w-2xl mx-auto tracking-tight">
+            My professional journey in software engineering and AI research.
+          </p>
+        </div>
+
+        {/* Timeline */}
+        <div className="space-y-6">
+          {sortedResumeData.map((item, index) => (
+            <div
+              key={index}
+              className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
+            >
+              <div className="flex flex-col md:flex-row gap-6">
+                {/* Logo */}
+                {item.logo && (
+                  <div className="shrink-0 flex justify-center md:justify-start">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
+                      <img
+                        src={item.logo}
+                        alt={`${item.institution} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
+                    <div>
+                      <h2 className="text-xl font-bold text-white tracking-tighter">
+                        {item.title}
+                      </h2>
+                      <h3 className="text-sky-400 font-medium tracking-tight">
+                        {item.institution}
+                      </h3>
+                    </div>
+                    <div className="text-sm text-gray-400 tracking-tight md:text-right">
+                      <div>
+                        {formatDate(item.startDate)} - {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
+                        {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
+                          ? ` (${calculateDuration(item.startDate, item.endDate)})`
+                          : ""}
+                      </div>
+                      <div className="text-gray-500">{item.location}</div>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {item.description.map((desc, i) => (
+                      <li key={i} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
+                        <span className="text-sky-400 mr-2 shrink-0">•</span>
+                        <span>{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
