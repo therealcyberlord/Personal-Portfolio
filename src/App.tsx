@@ -2,6 +2,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import Projects from "@/pages/Projects";
 import Resume from "@/pages/Resume";
+import NotFound from "@/pages/NotFound";
 import Navbar from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

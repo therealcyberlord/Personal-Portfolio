@@ -15,7 +15,7 @@ const AnimatedCounter = ({ value }: AnimatedCounterProps) => {
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         if (entries[0].isIntersecting && !hasAnimatedRef.current) {
           hasAnimatedRef.current = true;
           startAnimation();
