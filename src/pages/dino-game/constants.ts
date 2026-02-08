@@ -10,9 +10,9 @@ export const GRAVITY = 0.5;
 export const JUMP_FORCE = -10.5;
 
 // Game speed
-export const GAME_SPEED_INITIAL = 3.5;
+export const GAME_SPEED_INITIAL = 5;
 export const GAME_SPEED_INCREMENT = 0.0005;
-export const GAME_SPEED_MAX = 7;
+export const GAME_SPEED_MAX = 9;
 
 // Rendering
 export const PIXEL_SIZE = 2;

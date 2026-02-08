@@ -396,7 +396,7 @@ const NotFound = () => {
   }, [handleJump, handleDuckStart, handleDuckEnd, drawStartScreen]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] px-4">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 pt-24 pb-16">
       <h1 className="text-6xl font-bold text-gray-800 dark:text-gray-200 mb-2">
         404
       </h1>
