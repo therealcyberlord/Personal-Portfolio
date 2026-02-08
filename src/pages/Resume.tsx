@@ -36,11 +36,25 @@ const resumeData: ResumeExperience[] = [
     endDate: "Present",
     location: "Greater Boston, MA",
     description: [
-      { text: "Lead development of a quantitative analytics platform, generating $200K+ in new revenue within the first three months by iterating on user feedback and shipping high-impact features" },
-      { text: "Build and maintain scalable full-stack systems, supporting 1,000+ monthly active users across enterprise clients and internal teams using React, Node.js, Python, PostgreSQL, and Sentry" },
-      { text: "Design AI workflows to automate insight extraction and visualization from structured clinical data, minimizing manual data analysis leveraging Azure OpenAI, Pydantic/Zod, and LlamaIndex" }
+      { text: "Lead development of a quantitative analytics platform from 0 to 1, generating $200K+ in new revenue within the first 90 days by iterating on user feedback and shipping business-critical features" },
+      { text: "Design and ship agentic workflows to automatically query life sciences market research data, generate visualizations, and extract insights using Azure OpenAI, LlamaIndex, and Langfuse for observability" },
+      { text: "Build and deploy full-stack features (React, Koa.js, Python, PostgreSQL) serving 1,000+ monthly active users across enterprise clients and internal analysts, monitored with Sentry" }
     ],
     logo: Trinitylogo
+  },
+  {
+    title: "NLP Researcher",
+    institution: "UMass BioNLP Lab",
+    startDate: "2024-02",
+    endDate: "2025-01",
+    location: "Amherst, MA",
+    description: [
+      { text: "Co-authored research paper (MedQA-CS benchmark) on LLM evaluation accepted at EACL 2026" },
+      { text: "Researched Medical RAG systems using agentic design and test-time scaling to solve challenging benchmarks in the healthcare domain" },
+      { text: "Fine-tuned judge models via PEFT, achieving 93% correlation with human experts in scoring multi-turn patient-doctor simulations" },
+      { text: "Delivered high-throughput inference via vLLM, enabling batch processing for large-scale experiments" }
+    ],
+    logo: CICSlogo
   },
   {
     title: "AI Engineer Intern (First Intern Hire)",
@@ -50,29 +64,27 @@ const resumeData: ResumeExperience[] = [
     location: "Greater Boston, MA",
     description: [
       { text: "Optimized enterprise RAG systems, improving retrieval relevance by 50% via hybrid search and query rewriting using Weaviate, spaCy, and PostgreSQL" },
-      { text: "Engineered a dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar" }
+      { text: "Engineered dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar" }
     ],
     logo: Trinitylogo
   },
   {
-    title: "NLP Researcher, UMass BioNLP Lab",
-    institution: "Manning College of Information and Computer Sciences, UMass Amherst",
-    startDate: "2024-02",
-    endDate: "2025-01",
-    location: "Amherst, MA",
+    title: "Machine Learning Intern",
+    institution: "AI Camp Inc. (Edtech Startup)",
+    startDate: "2023-05",
+    endDate: "2023-08",
+    location: "Palo Alto, CA",
     description: [
-      { text: "Researched RAG grounded on medical datasets, test-time compute scaling, and LLM evaluation" },
-      { text: "Implemented agentic design patterns (planning, reflection, tool-use) to improve reasoning on challenging benchmarks with compute-optimal scaling strategies" },
-      { text: "Trained judge models on GPU clusters and leveraged VLLM for batch inference to evaluate patient encounter simulations, achieving 93% correlation with human evaluations using PEFT" }
+      { text: "Delivered proof-of-concept RAG application, earning Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails" }
     ],
-    logo: CICSlogo
+    logo: AICampLogo
   },
   {
     title: "Undergraduate Course Assistant",
     institution: "Manning College of Information and Computer Sciences, UMass Amherst",
     startDate: "2023-02",
     endDate: "2023-12",
-    location: "Amherst, Massachusetts, United States",
+    location: "Amherst, MA",
     description: [
       { text: "Supported course delivery by grading assignments while assisting professors with course material preparation" },
       { text: "Provided guidance to students in courses: CS 389 (Introduction to Machine Learning) and CS 383 (Artificial Intelligence)" }
@@ -80,25 +92,13 @@ const resumeData: ResumeExperience[] = [
     logo: CICSlogo
   },
   {
-    title: "Machine Learning Intern",
-    institution: "AI Camp Inc. (Ed-tech startup)",
-    startDate: "2023-05",
-    endDate: "2023-08",
-    location: "Palo Alto, CA",
-    description: [
-      { text: "Developed a PoC RAG application, earning the Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails" },
-      { text: "Mentored 10+ students on machine learning and web development fundamentals using Scikit-Learn, Transformers, and Flask" }
-    ],
-    logo: AICampLogo
-  },
-  {
     title: "Vice President",
     institution: "UMass Machine Learning Club",
     startDate: "2021-05",
     endDate: "2023-07",
-    location: "Amherst, Massachusetts, United States",
+    location: "Amherst, MA",
     description: [
-      { text: "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass" },
+      { text: "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass" }
     ],
     logo: ACMMLLogo
   },
@@ -107,7 +107,7 @@ const resumeData: ResumeExperience[] = [
     institution: "University of Massachusetts Amherst",
     startDate: "2021-09",
     endDate: "2022-01",
-    location: "Amherst, Massachusetts, United States",
+    location: "Amherst, MA",
     description: [
       { text: "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group" },
       { text: "Learned a lot about PyTorch specifically PyTorch Geometric" }
