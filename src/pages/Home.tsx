@@ -16,7 +16,7 @@ const Home = () => {
       sublabel: "Top 1% in Health"
     },
     {
-      value: "EACL 2025",
+      value: "EACL",
       label: "Published Research",
       sublabel: "MedQA-CS Benchmark"
     },
