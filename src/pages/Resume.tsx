@@ -30,9 +30,9 @@ const resumeData: ResumeExperience[] = [
     endDate: "Present",
     location: "Greater Boston, MA",
     description: [
-      "Lead development of a quantitative analytics platform from 0 to 1, generating $200K+ in new revenue within the first 90 days by iterating on user feedback and shipping business-critical features",
-      "Design and ship agentic workflows to automatically query life sciences market research data, generate visualizations, and extract insights using Azure OpenAI, LlamaIndex, and Langfuse for observability",
-      "Build and deploy full-stack features (React, Koa.js, Python, PostgreSQL) serving 1,000+ monthly active users across enterprise clients and internal analysts, monitored with Sentry"
+      "Own development of a quantitative analytics platform from 0 to 1, generating six-figure revenue within 90 days and reducing analyst time by 40% through iterative, feedback-driven delivery",
+      "Design and ship agentic workflows across structured and unstructured life sciences data using LangGraph and Deep Agents, building agent skills and specialized subagents for task delegation, incorporating human-in-the-loop validation and Langfuse for observability",
+      "Build full-stack platform features end-to-end (React, TypeScript, Python, PostgreSQL, AWS) serving 1,000+ monthly active users across enterprise clients and internal users"
     ],
     logo: Trinitylogo
   },
@@ -43,10 +43,10 @@ const resumeData: ResumeExperience[] = [
     endDate: "2025-01",
     location: "Amherst, MA",
     description: [
-      "Co-authored research paper (MedQA-CS benchmark) on LLM clinical skills evaluation accepted at EACL 2025",
-      "Researched Medical RAG systems using agentic design and test-time scaling to solve challenging benchmarks in the healthcare domain",
-      "Fine-tuned judge models via PEFT, achieving 93% correlation with human experts in scoring multi-turn patient-doctor simulations",
-      "Delivered high-throughput inference via vLLM, enabling batch processing for large-scale experiments"
+      "Co-authored and presented MedQA-CS, a novel benchmark for evaluating LLMs via simulated clinical examinations, accepted at EACL 2026",
+      "Explored RAG strategies with agentic design patterns (planning, reflection, GraphRAG) and test-time compute scaling across medical reasoning benchmarks of varying complexity",
+      "Curated a synthetic dataset via knowledge distillation from GPT-4 to fine-tune Qwen and Llama as judges, achieving ~93% correlation with experts on clinical information gathering and physical exams",
+      "Ran training and evaluation runs on compute clusters using Slurm and vLLM for scalable inference"
     ],
     logo: CICSlogo
   },
@@ -57,8 +57,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2024-08",
     location: "Greater Boston, MA",
     description: [
-      "Optimized enterprise RAG systems, improving retrieval relevance by 50% via hybrid search and query rewriting using Weaviate, spaCy, and PostgreSQL",
-      "Engineered dedicated RAG evaluation service to systematically benchmark and monitor performance with LlamaIndex and Litestar"
+      "Integrated OpenFDA as an external medical knowledge source into production RAG pipelines, automating data ingestion via cron jobs to ensure the knowledge base stays current",
+      "Improved retrieval relevance by 50% via enhanced hybrid search and query rewriting using Weaviate and spaCy"
     ],
     logo: Trinitylogo
   },
@@ -140,9 +140,9 @@ const Resume = () => {
 
         {/* Timeline */}
         <div className="space-y-6">
-          {sortedResumeData.map((item, index) => (
+          {sortedResumeData.map((item) => (
             <div
-              key={index}
+              key={`${item.institution}-${item.startDate}`}
               className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
             >
               <div className="flex flex-col md:flex-row gap-6">

@@ -6,7 +6,7 @@ import profileImage from "/images/profile.jpg";
 const Home = () => {
   const highlights = [
     {
-      value: "550K+",
+      value: "574K+",
       label: "Views on Kaggle",
       sublabel: "COVID-19 Data Analysis"
     },
@@ -34,8 +34,8 @@ const Home = () => {
       year: "2026",
       venueType: "Conference Paper",
       authors: "Zonghai Yao, Zihao Zhang, Chaolong Tang, Xingyu Bian, Youxia Zhao, Zhichao Yang, Junda Wang, Huixue Zhou, Won Seok Jang, Feiyun Ouyang, Hong Yu",
-      url: "https://arxiv.org/abs/2410.01553",
-      linkText: "arXiv",
+      url: "https://aclanthology.org/2026.eacl-long.292/",
+      linkText: "ACL Anthology",
       abstract: "An OSCE-style evaluation framework that assesses LLM clinical skills through simulated patient-doctor encounters, providing more rigorous assessment than traditional medical QA benchmarks.",
       badgeClass: "bg-sky-500/20 text-sky-300",
       hoverBorder: "hover:border-sky-500/30"
@@ -70,7 +70,7 @@ const Home = () => {
     {
       title: "Databases & Tools",
       icon: <Server className="w-6 h-6" />,
-      skills: ["Weaviate", "PostgreSQL", "Docker", "AWS", "Git", "CI/CD", "Sentry"],
+      skills: ["PostgreSQL", "AWS", "Git", "Sentry", "CI/CD", "Docker", "Redis"],
       color: "from-sky-500 to-blue-600"
     },
     {
@@ -119,9 +119,9 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {highlights.map((item, index) => (
+            {highlights.map((item) => (
               <div
-                key={index}
+                key={item.label}
                 className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
               >
                 <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1">
@@ -153,9 +153,9 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {publications.map((pub, index) => (
+            {publications.map((pub) => (
               <div
-                key={index}
+                key={pub.url}
                 className={`bg-linear-to-br from-gray-800/80 to-gray-800/40 rounded-2xl p-6 border border-gray-700/50 ${pub.hoverBorder} transition-all duration-300`}
               >
                 <div className="flex items-start justify-between gap-4 mb-4">

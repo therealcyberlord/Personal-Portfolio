@@ -23,9 +23,9 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            {socialLinks.map((link, index) => (
+            {socialLinks.map((link) => (
               <a
-                key={index}
+                key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"

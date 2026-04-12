@@ -20,7 +20,7 @@ const projects: Project[] = [
     url: "https://www.kaggle.com/code/therealcyberlord/coronavirus-covid-19-visualization-prediction",
     icon: Activity,
     stats: {
-      views: "550K+",
+      views: "574K+",
       forks: "10K+",
       impact: "Top 1% in Health"
     }
@@ -84,9 +84,9 @@ function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <a
-              key={index}
+              key={project.url}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
