@@ -39,7 +39,7 @@ import {
 
 const NotFound = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const gameLoopRef = useRef<number>(0);
+  const gameLoopRef = useRef<number | undefined>(undefined);
   const [score, setScore] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
 
@@ -391,7 +391,9 @@ const NotFound = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
-      cancelAnimationFrame(gameLoopRef.current);
+      if (gameLoopRef.current !== undefined) {
+        cancelAnimationFrame(gameLoopRef.current);
+      }
     };
   }, [handleJump, handleDuckStart, handleDuckEnd, drawStartScreen]);
 

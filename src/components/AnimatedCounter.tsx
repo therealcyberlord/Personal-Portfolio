@@ -8,7 +8,7 @@ const AnimatedCounter = ({ value }: AnimatedCounterProps) => {
   const [displayValue, setDisplayValue] = useState('0');
   const hasAnimatedRef = useRef(false);
   const elementRef = useRef<HTMLSpanElement>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const element = elementRef.current;
