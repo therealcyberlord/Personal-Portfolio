@@ -1,7 +1,22 @@
-import { Code, Layers, Briefcase, ExternalLink, Award, Server, Brain } from 'lucide-react';
+import { Code, Layers, Briefcase, ExternalLink, Award, Server, Brain, Mail } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
 import Profile from "@/components/Profile";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import profileImage from "/images/profile.jpg";
+
+type Publication = {
+  title: string;
+  venue: string;
+  year: string;
+  venueType: string;
+  authors: string;
+  url: string;
+  linkText: string;
+  abstract: string;
+  badgeClass: string;
+  tierBadgeClass: string;
+  hoverBorder: string;
+};
 
 const Home = () => {
   const highlights = [
@@ -27,7 +42,7 @@ const Home = () => {
     }
   ];
 
-  const publications = [
+  const publications: Publication[] = [
     {
       title: "MedQA-CS: Benchmarking Large Language Models Clinical Skills Using an AI-SCE Framework",
       venue: "EACL Main Conference",
@@ -38,18 +53,20 @@ const Home = () => {
       linkText: "ACL Anthology",
       abstract: "An OSCE-style evaluation framework that assesses LLM clinical skills through simulated patient-doctor encounters, providing more rigorous assessment than traditional medical QA benchmarks.",
       badgeClass: "bg-sky-500/20 text-sky-300",
+      tierBadgeClass: "bg-sky-500/20 text-sky-300",
       hoverBorder: "hover:border-sky-500/30"
     },
     {
       title: "Denoising Autoencoder on Colored Images Using TensorFlow",
       venue: "Analytics Vidhya",
       year: "2019",
-      venueType: "Technical Article",
+      venueType: "Technical Writing",
       authors: "Xingyu Bian",
       url: "https://medium.com/analytics-vidhya/denoising-autoencoder-on-colored-images-using-tensorflow-17bf63e19dad",
       linkText: "Medium",
       abstract: "A hands-on tutorial demonstrating how to build a convolutional autoencoder that removes Gaussian noise from colored images using TensorFlow and Keras.",
       badgeClass: "bg-sky-500/20 text-sky-300",
+      tierBadgeClass: "bg-gray-600/30 text-gray-300",
       hoverBorder: "hover:border-sky-500/30"
     }
   ];
@@ -87,7 +104,7 @@ const Home = () => {
         name="Xingyu Bian"
         description="Software engineer with an M.S. in Computer Science from UMass Amherst. I build systems that scale, from full-stack applications to production AI."
         img_path={profileImage}
-        role="Software Engineer, AI Researcher, Lifelong Learner"
+        role="Software Engineer · AI Researcher · Builder"
       />
 
       {/* Current Role Banner */}
@@ -122,7 +139,7 @@ const Home = () => {
             {highlights.map((item) => (
               <div
                 key={item.label}
-                className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
+                className="card"
               >
                 <div className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-1">
                   <AnimatedCounter value={item.value} />
@@ -163,7 +180,7 @@ const Home = () => {
                     <span className={`inline-flex w-fit px-3 py-1 rounded-full ${pub.badgeClass} text-sm font-medium tracking-tight`}>
                       {pub.venue} {pub.year}
                     </span>
-                    <span className="text-gray-500 text-xs tracking-tight">
+                    <span className={`inline-flex w-fit px-2 py-0.5 rounded-md ${pub.tierBadgeClass} text-xs font-medium tracking-tight`}>
                       {pub.venueType}
                     </span>
                   </div>
@@ -208,7 +225,7 @@ const Home = () => {
             {skillCategories.map((category) => (
               <div
                 key={category.title}
-                className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
+                className="card"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`inline-flex p-2.5 rounded-xl bg-linear-to-br ${category.color} text-white`}>
@@ -230,6 +247,36 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="border-t border-gray-800 py-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-4">
+            Let's Connect
+          </h2>
+          <p className="text-gray-400 tracking-tight mb-8">
+            Open to interesting problems, collaborations, and conversations.
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href="mailto:xingyubiancyberland@gmail.com"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-medium tracking-tight transition-all duration-300"
+            >
+              <Mail className="w-4 h-4" />
+              Email Me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/xingyu-bian-1734bb134/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-xl font-medium tracking-tight transition-all duration-300 border border-gray-700"
+            >
+              <FaLinkedin className="w-4 h-4" />
+              LinkedIn
+            </a>
           </div>
         </div>
       </section>
