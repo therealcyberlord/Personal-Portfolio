@@ -1,4 +1,4 @@
-import { Briefcase } from "lucide-react";
+import { Briefcase, GraduationCap } from "lucide-react";
 import Trinitylogo from "/images/logos/Trinity.png";
 import CICSlogo from "/images/logos/CICS.jpeg";
 import AICampLogo from "/images/logos/AICamp.png";
@@ -21,6 +21,39 @@ type ResumeExperience = {
   description: string[];
   logo: string;
 }
+
+type EducationEntry = {
+  degree: string;
+  institution: string;
+  graduationLabel: string;
+  location: string;
+  logo: string;
+  bullets: string[];
+};
+
+const educationData: EducationEntry[] = [
+  {
+    degree: "M.S. in Computer Science",
+    institution: "University of Massachusetts Amherst",
+    graduationLabel: "Graduated Dec 2024",
+    location: "Amherst, MA",
+    logo: UMassLogo,
+    bullets: [
+      "GPA: 3.86 / 4.0",
+      "Relevant Coursework: Neural Networks, Machine Learning, Intelligent Visual Computing, Algorithms for Data Science, Software Engineering, Technical Project Management",
+    ]
+  },
+  {
+    degree: "B.S. in Computer Science",
+    institution: "University of Massachusetts Amherst",
+    graduationLabel: "Graduated Dec 2023",
+    location: "Amherst, MA",
+    logo: UMassLogo,
+    bullets: [
+      "GPA: 3.76 / 4.0",
+    ]
+  }
+];
 
 const resumeData: ResumeExperience[] = [
   {
@@ -104,7 +137,7 @@ const resumeData: ResumeExperience[] = [
     location: "Amherst, MA",
     description: [
       "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group",
-      "Learned a lot about PyTorch specifically PyTorch Geometric"
+      "Applied PyTorch Geometric to model molecular properties as part of the Zhou Lin Quantum Chemistry group"
     ],
     logo: UMassLogo
   }
@@ -138,12 +171,57 @@ const Resume = () => {
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* Education */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <GraduationCap className="w-5 h-5 text-sky-400" />
+            <h2 className="text-xl font-bold text-white tracking-tighter">Education</h2>
+          </div>
+          <div className="space-y-6">
+            {educationData.map((edu) => (
+              <div key={`${edu.institution}-${edu.degree}`} className="card">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="shrink-0 flex justify-center md:justify-start">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
+                      <img src={edu.logo} alt={`${edu.institution} logo`} className="w-full h-full object-contain" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
+                      <div>
+                        <h2 className="text-xl font-bold text-white tracking-tighter">{edu.degree}</h2>
+                        <h3 className="text-sky-400 font-medium tracking-tight">{edu.institution}</h3>
+                      </div>
+                      <div className="text-sm text-gray-400 tracking-tight md:text-right">
+                        <div>{edu.graduationLabel}</div>
+                        <div className="text-gray-500">{edu.location}</div>
+                      </div>
+                    </div>
+                    <ul className="space-y-2">
+                      {edu.bullets.map((bullet) => (
+                        <li key={bullet} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
+                          <span className="text-sky-400 mr-2 shrink-0">•</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div className="flex items-center gap-2 mb-4">
+          <Briefcase className="w-5 h-5 text-sky-400" />
+          <h2 className="text-xl font-bold text-white tracking-tighter">Experience</h2>
+        </div>
         <div className="space-y-6">
           {sortedResumeData.map((item) => (
             <div
               key={`${item.institution}-${item.startDate}`}
-              className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50"
+              className="card"
             >
               <div className="flex flex-col md:flex-row gap-6">
                 {/* Logo */}
@@ -182,8 +260,8 @@ const Resume = () => {
                   </div>
 
                   <ul className="space-y-2">
-                    {item.description.map((desc, i) => (
-                      <li key={i} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
+                    {item.description.map((desc) => (
+                      <li key={desc} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
                         <span className="text-sky-400 mr-2 shrink-0">•</span>
                         <span>{desc}</span>
                       </li>
