@@ -31,7 +31,7 @@ const Profile = ({
           </div>
 
           <div className={`mt-8 text-center transition-all duration-1000 delay-300 ${isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter animate-fade-in bg-linear-to-r from-white via-sky-200 to-sky-400 bg-clip-text text-transparent pb-1">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter animate-fade-in bg-linear-to-r from-white via-sky-200 to-sky-400 text-gradient pb-1">
               {name}
             </h2>
             <h3 className="text-xl md:text-2xl text-sky-400 mt-2 font-semibold tracking-tight">

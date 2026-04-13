@@ -77,12 +77,13 @@
     0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-@utility tracking-tight {
-  letter-spacing: -0.025em;
-}
-
-@utility tracking-tighter {
-  letter-spacing: -0.05em;
+@utility card {
+  background-color: color-mix(in srgb, var(--color-gray-800) 50%, transparent);
+  border-radius: var(--radius-2xl);
+  padding: calc(var(--spacing) * 6);
+  border-width: 1px;
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--color-gray-700) 50%, transparent);
 }
 
 @layer base {
