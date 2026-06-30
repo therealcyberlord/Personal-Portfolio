@@ -2,9 +2,9 @@ import { Briefcase, GraduationCap } from "lucide-react";
 import Trinitylogo from "/images/logos/Trinity.png";
 import CICSlogo from "/images/logos/CICS.jpeg";
 import AICampLogo from "/images/logos/AICamp.png";
-import ACMMLLogo from "/images/logos/ACMML.jpeg";
 import UMassLogo from "/images/logos/UMass.png";
 import { calculateDuration } from "@/utils/time";
+import Reveal from "@/components/Reveal";
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString + 'T12:00:00Z');
@@ -63,9 +63,10 @@ const resumeData: ResumeExperience[] = [
     endDate: "Present",
     location: "Greater Boston, MA",
     description: [
-      "Own development of a quantitative analytics platform from 0 to 1, generating six-figure revenue within 90 days and reducing analyst time by 40% through iterative, feedback-driven delivery",
-      "Design and ship agentic workflows across structured and unstructured life sciences data using LangGraph and Deep Agents, building agent skills and specialized subagents for task delegation, incorporating human-in-the-loop validation and Langfuse for observability",
-      "Build full-stack platform features end-to-end (React, TypeScript, Python, PostgreSQL, AWS) serving 1,000+ monthly active users across enterprise clients and internal users"
+      "Build and own an AI analytics platform from 0 to 1, generating six-figure revenue within the first 90 days and reducing analysis delivery time by 40% through tight user feedback loops with stakeholders",
+      "Engineer a hybrid LLM + deterministic cross-tab parser with an interactive visualization layer for real-time filtering and auto-suggested charts",
+      "Design and deploy production multi-agent orchestration over life sciences market research data using LangChain and Deep Agents, with human-in-the-loop validation and Langfuse observability",
+      "Ship full-stack platform features end-to-end (React, Node.js, PostgreSQL, AWS) serving 1,000+ monthly active users across enterprise clients and internal teams"
     ],
     logo: Trinitylogo
   },
@@ -77,9 +78,8 @@ const resumeData: ResumeExperience[] = [
     location: "Amherst, MA",
     description: [
       "Co-authored and presented MedQA-CS, a novel benchmark for evaluating LLMs via simulated clinical examinations, accepted at EACL 2026",
-      "Explored RAG strategies with agentic design patterns (planning, reflection, GraphRAG) and test-time compute scaling across medical reasoning benchmarks of varying complexity",
-      "Curated a synthetic dataset via knowledge distillation from GPT-4 to fine-tune Qwen and Llama as judges, achieving ~93% correlation with experts on clinical information gathering and physical exams",
-      "Ran training and evaluation runs on compute clusters using Slurm and vLLM for scalable inference"
+      "Implemented RAG strategies with agentic design patterns (planning, reflection, GraphRAG) and test-time compute scaling across medical reasoning benchmarks of varying complexity",
+      "Curated a synthetic dataset via knowledge distillation from GPT-4 to fine-tune Qwen and Llama as judges, achieving 93% correlation with experts on clinical information gathering and physical exams"
     ],
     logo: CICSlogo
   },
@@ -90,8 +90,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2024-08",
     location: "Greater Boston, MA",
     description: [
-      "Integrated OpenFDA as an external medical knowledge source into production RAG pipelines, automating data ingestion via cron jobs to ensure the knowledge base stays current",
-      "Improved retrieval relevance by 50% via enhanced hybrid search and query rewriting using Weaviate and spaCy"
+      "Integrated OpenFDA as an external medical knowledge source into RAG pipelines, automating data updates via cron jobs to ensure the knowledge base stays current",
+      "Enhanced hybrid search to recognize industry terminology and synonyms using Weaviate and spaCy, improving domain-specific retrieval"
     ],
     logo: Trinitylogo
   },
@@ -102,44 +102,9 @@ const resumeData: ResumeExperience[] = [
     endDate: "2023-08",
     location: "Palo Alto, CA",
     description: [
-      "Delivered proof-of-concept RAG application, earning Best Product Nomination out of 6 engineering teams utilizing LangChain, Chroma, and NeMo Guardrails"
+      "Built a document QA system with RAG, web search, and hallucination mitigation using LangChain, Chroma, GPT-4, and NeMo Guardrails, nominated Best Product out of 6 engineering teams"
     ],
     logo: AICampLogo
-  },
-  {
-    title: "Undergraduate Course Assistant",
-    institution: "Manning College of Information and Computer Sciences, UMass Amherst",
-    startDate: "2023-02",
-    endDate: "2023-12",
-    location: "Amherst, MA",
-    description: [
-      "Supported course delivery by grading assignments while assisting professors with course material preparation",
-      "Provided guidance to students in courses: CS 389 (Introduction to Machine Learning) and CS 383 (Artificial Intelligence)"
-    ],
-    logo: CICSlogo
-  },
-  {
-    title: "Vice President",
-    institution: "UMass Machine Learning Club",
-    startDate: "2021-05",
-    endDate: "2023-07",
-    location: "Amherst, MA",
-    description: [
-      "Organized events, workshops, and projects to foster a community of ML enthusiasts at UMass"
-    ],
-    logo: ACMMLLogo
-  },
-  {
-    title: "Undergraduate Research Assistant",
-    institution: "University of Massachusetts Amherst",
-    startDate: "2021-09",
-    endDate: "2022-01",
-    location: "Amherst, MA",
-    description: [
-      "Conducted research on graph neural networks with the Zhou Lin Quantum Chemistry group",
-      "Applied PyTorch Geometric to model molecular properties as part of the Zhou Lin Quantum Chemistry group"
-    ],
-    logo: UMassLogo
   }
 ];
 
@@ -155,31 +120,29 @@ const sortedResumeData = [...resumeData].sort((a, b) => {
 
 const Resume = () => {
   return (
-    <div className="min-h-screen bg-gray-900 pt-24 pb-16 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-dvh bg-gray-950 pt-32 pb-20 px-6">
+      <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/30 mb-4">
-            <Briefcase className="w-4 h-4 text-sky-400" />
-            <span className="text-sky-400 font-medium text-sm tracking-tight">Experience</span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tighter mb-4">
+        <Reveal className="mb-14">
+          <p className="eyebrow text-sky-400">Experience</p>
+          <h1 className="display mt-3 text-5xl md:text-7xl text-gray-200">
             Resume
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto tracking-tight">
+          <p className="mt-4 max-w-xl text-gray-400">
             My professional journey in software engineering and AI research.
           </p>
-        </div>
+        </Reveal>
 
         {/* Education */}
-        <div className="mb-10">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-5">
             <GraduationCap className="w-5 h-5 text-sky-400" />
-            <h2 className="text-xl font-bold text-white tracking-tighter">Education</h2>
+            <h2 className="display text-2xl text-gray-200">Education</h2>
           </div>
           <div className="space-y-6">
-            {educationData.map((edu) => (
-              <div key={`${edu.institution}-${edu.degree}`} className="card">
+            {educationData.map((edu, i) => (
+              <Reveal key={`${edu.institution}-${edu.degree}`} delay={i * 70}>
+              <div className="card hover:border-gray-600">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="shrink-0 flex justify-center md:justify-start">
                     <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
@@ -189,12 +152,12 @@ const Resume = () => {
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
                       <div>
-                        <h2 className="text-xl font-bold text-white tracking-tighter">{edu.degree}</h2>
-                        <h3 className="text-sky-400 font-medium tracking-tight">{edu.institution}</h3>
+                        <h2 className="text-lg font-medium text-gray-200">{edu.degree}</h2>
+                        <h3 className="text-sky-400 text-sm">{edu.institution}</h3>
                       </div>
-                      <div className="text-sm text-gray-400 tracking-tight md:text-right">
+                      <div className="font-mono text-xs text-gray-500 md:text-right">
                         <div>{edu.graduationLabel}</div>
-                        <div className="text-gray-500">{edu.location}</div>
+                        <div>{edu.location}</div>
                       </div>
                     </div>
                     <ul className="space-y-2">
@@ -208,21 +171,20 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* Experience */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-5">
           <Briefcase className="w-5 h-5 text-sky-400" />
-          <h2 className="text-xl font-bold text-white tracking-tighter">Experience</h2>
+          <h2 className="display text-2xl text-gray-200">Experience</h2>
         </div>
         <div className="space-y-6">
-          {sortedResumeData.map((item) => (
-            <div
-              key={`${item.institution}-${item.startDate}`}
-              className="card"
-            >
+          {sortedResumeData.map((item, i) => (
+            <Reveal key={`${item.institution}-${item.startDate}`} delay={i * 60}>
+            <div className="card hover:border-gray-600">
               <div className="flex flex-col md:flex-row gap-6">
                 {/* Logo */}
                 {item.logo && (
@@ -241,21 +203,21 @@ const Resume = () => {
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
                     <div>
-                      <h2 className="text-xl font-bold text-white tracking-tighter">
+                      <h2 className="text-lg font-medium text-gray-200">
                         {item.title}
                       </h2>
-                      <h3 className="text-sky-400 font-medium tracking-tight">
+                      <h3 className="text-sky-400 text-sm">
                         {item.institution}
                       </h3>
                     </div>
-                    <div className="text-sm text-gray-400 tracking-tight md:text-right">
+                    <div className="font-mono text-xs text-gray-500 md:text-right">
                       <div>
-                        {formatDate(item.startDate)} - {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
+                        {formatDate(item.startDate)} to {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
                         {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
                           ? ` (${calculateDuration(item.startDate, item.endDate)})`
                           : ""}
                       </div>
-                      <div className="text-gray-500">{item.location}</div>
+                      <div>{item.location}</div>
                     </div>
                   </div>
 
@@ -270,6 +232,7 @@ const Resume = () => {
                 </div>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

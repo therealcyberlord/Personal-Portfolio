@@ -25,3 +25,5 @@ dist-ssr
 *.sw?
 
 .history
+.agents
+skills-lock.json

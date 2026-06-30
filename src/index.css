@@ -1,48 +1,41 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #202225;
-  --color-secondary: #5865f2;
+  /* Type: a single book serif (Newsreader) for reading and display, the way a
+     printed book uses one face. Geist Mono is kept only for small data labels. */
+  --font-sans: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --font-sans:
-    Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, Noto Sans, sans-serif;
+  /* Surfaces: one consistent family tinted deep royal navy, ink-blue depth */
+  --color-gray-200: #eaecf6;
+  --color-gray-300: #ccd2e8;
+  --color-gray-400: #a3acd0;
+  --color-gray-500: #7b86b8;
+  --color-gray-600: #4756a0;
+  --color-gray-700: #2e3c84;
+  --color-gray-800: #1c2868;
+  --color-gray-900: #0e1750;
+  --color-gray-950: #0a1242;
 
-  --text-xs: 0.75rem;
-  --text-xs--line-height: 1rem;
-  --text-sm: 0.875rem;
-  --text-sm--line-height: 1.25rem;
-  --text-base: 1rem;
-  --text-base--line-height: 1.5rem;
-  --text-lg: 1.125rem;
-  --text-lg--line-height: 1.75rem;
-  --text-xl: 1.25rem;
-  --text-xl--line-height: 1.75rem;
-  --text-2xl: 1.5rem;
-  --text-2xl--line-height: 2rem;
-  --text-3xl: 1.875rem;
-  --text-3xl--line-height: 2.25rem;
-  --text-4xl: 2.25rem;
-  --text-4xl--line-height: 2.5rem;
-  --text-5xl: 3rem;
-  --text-5xl--line-height: 1;
-  --text-6xl: 3.75rem;
-  --text-6xl--line-height: 1;
-  --text-7xl: 4.5rem;
-  --text-7xl--line-height: 1;
-  --text-8xl: 6rem;
-  --text-8xl--line-height: 1;
-  --text-9xl: 8rem;
-  --text-9xl--line-height: 1;
+  /* Single muted accent: warm champagne gold, the classic pairing with navy.
+     Mapped over sky + blue so every accent class recolors at once. */
+  --color-sky-200: #f5e6c0;
+  --color-sky-300: #eed79b;
+  --color-sky-400: #e3c074;
+  --color-sky-500: #d4a94f;
+  --color-sky-600: #c2933a;
+  --color-sky-700: #a0762d;
+  --color-blue-500: #d4a94f;
+  --color-blue-600: #c2933a;
+
+  /* Weighted spring curve for premium, physical motion */
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  The default border color changed to `currentcolor` in Tailwind CSS v4.
+  These compatibility styles keep the v3 default border behavior.
 */
 @layer base {
   *,
@@ -50,116 +43,97 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-gray-700, currentcolor);
   }
-}
 
-@utility text-gradient {
-  /* Custom typography utilities */
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@utility text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-@utility text-shadow-md {
-  text-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-@utility text-shadow-lg {
-  text-shadow:
-    0 10px 15px rgba(0, 0, 0, 0.1),
-    0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-@utility card {
-  background-color: color-mix(in srgb, var(--color-gray-800) 50%, transparent);
-  border-radius: var(--radius-2xl);
-  padding: calc(var(--spacing) * 6);
-  border-width: 1px;
-  border-style: solid;
-  border-color: color-mix(in srgb, var(--color-gray-700) 50%, transparent);
-}
-
-@layer base {
-  /* Base typography styles */
   html {
-    font-family: 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 
-      'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif;
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  
-  /* Headings */
+
+  body {
+    background-color: var(--color-gray-950);
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
   }
-  
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-  
-  h3 {
-    font-size: 1.75rem;
-    font-weight: 700;
-  }
-  
-  h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  h5 {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  
-  h6 {
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  
-  /* Paragraphs */
+
   p {
-    line-height: 1.6;
-    letter-spacing: -0.01em;
+    line-height: 1.65;
+    text-wrap: pretty;
   }
-  
-  /* Links */
+
   a {
     text-decoration: none;
   }
-  
-  /* Animations */
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+  /* Refine icon line weight away from the heavy Lucide default */
+  .lucide {
+    stroke-width: 1.5px;
   }
-  
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Display headings: book serif, set a touch heavier for presence at large sizes */
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+/* Small mono eyebrow label in place of a generic pill badge */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Surface card: quiet tinted border, top inner highlight, spring motion */
+@utility card {
+  background-color: color-mix(in srgb, var(--color-gray-800) 55%, transparent);
+  border-radius: var(--radius-2xl);
+  padding: calc(var(--spacing) * 6);
+  border: 1px solid color-mix(in srgb, var(--color-gray-700) 60%, transparent);
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
+  transition:
+    border-color 400ms var(--ease-spring),
+    transform 400ms var(--ease-spring),
+    background-color 400ms var(--ease-spring),
+    box-shadow 400ms var(--ease-spring);
+}
+
+/* Fixed film-grain overlay for editorial paper texture (kept off scroll path) */
+@utility grain {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll-entry reveal: heavy fade-up with blur, toggled by IntersectionObserver */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+    transition:
+      opacity 800ms var(--ease-spring),
+      transform 800ms var(--ease-spring),
+      filter 800ms var(--ease-spring);
   }
-  
-  .animate-blink {
-    animation: blink 1s step-end infinite;
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
   }
 }

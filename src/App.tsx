@@ -8,7 +8,8 @@ import Footer from "@/components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="flex min-h-dvh flex-col font-sans">
+      <div className="grain" aria-hidden="true" />
       <Router>
         <Navbar />
         <main className="flex-1">

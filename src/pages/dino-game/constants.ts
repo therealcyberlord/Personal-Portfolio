@@ -55,7 +55,7 @@ export const GAP_MULTIPLIER_SAFE_BIRD_SPAWN = 1.8;
 // SPRITE DATA
 // ============================================================================
 
-// T-Rex standing sprite — big forward head, tiny arms, tapering tail
+// T-Rex standing sprite - big forward head, tiny arms, tapering tail
 export const DINO_SPRITE = [
   [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
   [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -84,7 +84,7 @@ export const LEGS_RIGHT = [
   [0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
 ];
 
-// T-Rex ducking sprite — head forward, body flat and wide
+// T-Rex ducking sprite - head forward, body flat and wide
 export const DINO_DUCK_SPRITE = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],

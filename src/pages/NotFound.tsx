@@ -398,28 +398,29 @@ const NotFound = () => {
   }, [handleJump, handleDuckStart, handleDuckEnd, drawStartScreen]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 pt-24 pb-16">
-      <h1 className="text-6xl font-bold text-gray-800 dark:text-gray-200 mb-2">
-        404
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-gray-950 px-6 pt-28 pb-16">
+      <p className="eyebrow text-sky-400">Error 404</p>
+      <h1 className="display mt-3 text-7xl text-gray-200">
+        Page not found
       </h1>
-      <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
-        Page not found — but here's a game while you're here!
+      <p className="mt-4 mb-10 text-gray-400">
+        This route doesn't exist, so here's a game while you're here.
       </p>
 
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-4 mb-4 max-w-full overflow-hidden">
-        <div className="flex justify-between items-center mb-2 px-1">
-          <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">
+      <div className="mb-4 max-w-full overflow-hidden rounded-xl border border-gray-800 bg-gray-200 p-4">
+        <div className="mb-2 flex items-center justify-between px-1">
+          <span className="font-mono text-sm text-gray-600">
             Score: {formatScore(score)}
           </span>
           {gameOver && (
-            <span className="text-sm text-red-500 font-mono">Game Over!</span>
+            <span className="font-mono text-sm text-red-600">Game over</span>
           )}
         </div>
         <canvas
           ref={canvasRef}
           width={CANVAS_WIDTH}
           height={CANVAS_HEIGHT}
-          className="border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer max-w-full"
+          className="max-w-full cursor-pointer rounded-lg"
           style={{ imageRendering: "pixelated" }}
           onClick={handleJump}
           onTouchStart={(e) => {
@@ -429,16 +430,16 @@ const NotFound = () => {
         />
       </div>
 
-      <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">
+      <p className="mb-8 font-mono text-xs text-gray-500">
         Space / Up to jump · Down to duck · Tap to jump
       </p>
 
       <Link
         to="/"
-        className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 rounded-lg hover:opacity-90 transition-opacity font-medium"
+        className="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-5 py-2.5 font-medium text-gray-950 transition-colors hover:bg-white active:scale-[0.98]"
       >
         <Home size={18} />
-        Back to Home
+        Back to home
       </Link>
     </div>
   );

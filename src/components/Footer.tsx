@@ -10,26 +10,26 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+    <footer className="border-t border-gray-800">
+      <div className="max-w-5xl mx-auto px-6 py-14">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold text-white tracking-tighter mb-1">
+            <h3 className="display text-2xl text-gray-200">
               Xingyu Bian
             </h3>
-            <p className="text-gray-400 text-sm tracking-tight">
-              Software Engineer & AI Researcher
+            <p className="text-gray-500 text-sm">
+              Software engineer &amp; AI researcher
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
+                className="rounded-lg p-2.5 text-gray-500 transition-colors hover:text-sky-400"
                 aria-label={link.label}
               >
                 {link.icon}
@@ -38,12 +38,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm tracking-tight">
-            &copy; {currentYear} Xingyu Bian. All rights reserved.
+        <div className="mt-10 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-gray-600 text-sm">
+            &copy; {currentYear} Xingyu Bian
           </p>
-          <p className="text-gray-600 text-sm tracking-tight">
-            Built with React, TypeScript & Tailwind CSS
+          <p className="font-mono text-xs text-gray-600">
+            React · TypeScript · Tailwind CSS
           </p>
         </div>
       </div>

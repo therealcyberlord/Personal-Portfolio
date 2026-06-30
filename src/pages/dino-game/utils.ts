@@ -96,7 +96,7 @@ export const selectObstacleType = (
   // - Don't spawn cactus right after high bird (would need duck → jump)
 
   if (lastType === "cactus" && rightmostX > CANVAS_WIDTH - gap * GAP_MULTIPLIER_AFTER_CACTUS) {
-    // Too close after a cactus — only spawn low bird or another cactus
+    // Too close after a cactus - only spawn low bird or another cactus
     return Math.random() > 0.6 ? "bird" : "cactus";
   }
 
@@ -135,8 +135,8 @@ export const createBird = (lastObstacle: Obstacle | null, gap: number): Obstacle
   const rightmostX = lastObstacle ? lastObstacle.x + lastObstacle.width : 0;
 
   // Two bird heights:
-  // - Low bird (ground level) — jump over it
-  // - High bird (head height) — duck under it
+  // - Low bird (ground level) - jump over it
+  // - High bird (head height) - duck under it
   let birdY: number;
 
   if (
@@ -148,8 +148,8 @@ export const createBird = (lastObstacle: Obstacle | null, gap: number): Obstacle
   } else {
     birdY =
       Math.random() > 0.5
-        ? GROUND_Y - birdH - BIRD_LOW_OFFSET // Low — jump over
-        : GROUND_Y - DINO_H_STAND - BIRD_HIGH_OFFSET; // High — duck under
+        ? GROUND_Y - birdH - BIRD_LOW_OFFSET // Low - jump over
+        : GROUND_Y - DINO_H_STAND - BIRD_HIGH_OFFSET; // High - duck under
   }
 
   return {

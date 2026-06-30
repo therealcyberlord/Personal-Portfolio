@@ -16,37 +16,35 @@ const Profile = ({
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
-    <div className="relative py-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center">
-          <div className="relative mb-8">
-            <div className={`transition-all duration-1000 ${isImageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
-              <img
-                onLoad={() => setIsImageLoaded(true)}
-                className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-sky-400/20"
-                src={img_path}
-                alt="Profile picture"
-              />
-            </div>
-          </div>
-
-          <div className={`mt-8 text-center transition-all duration-1000 delay-300 ${isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter animate-fade-in bg-linear-to-r from-white via-sky-200 to-sky-400 text-gradient pb-1">
-              {name}
-            </h2>
-            <h3 className="text-xl md:text-2xl text-sky-400 mt-2 font-semibold tracking-tight">
-              {role}
-            </h3>
-          </div>
-
-          <div className={`mt-6 max-w-3xl text-center transition-all duration-1000 delay-500 ${isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed tracking-tight">
-              {description}
-            </p>
+    <header className="relative overflow-hidden px-6 pt-36 pb-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-20 -z-10 h-[26rem] w-[44rem] max-w-[90vw] -translate-x-1/2 rounded-full bg-sky-500/12 blur-[130px]"
+      />
+      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+        <div className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${isImageLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-md'}`}>
+          <div className="rounded-full bg-gray-800/40 p-1.5 ring-1 ring-gray-700/60">
+            <img
+              onLoad={() => setIsImageLoaded(true)}
+              className="h-32 w-32 rounded-full object-cover ring-1 ring-sky-400/30 md:h-36 md:w-36"
+              src={img_path}
+              alt={`Portrait of ${name}`}
+            />
           </div>
         </div>
+
+        <div className={`mt-8 transition-all duration-1000 delay-200 ease-[cubic-bezier(0.32,0.72,0,1)] ${isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <p className="eyebrow text-sky-400">{role}</p>
+          <h1 className="display mt-4 text-5xl text-gray-200 md:text-6xl">
+            {name}
+          </h1>
+        </div>
+
+        <p className={`mt-6 max-w-xl text-lg leading-relaxed text-gray-400 transition-all duration-1000 delay-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          {description}
+        </p>
       </div>
-    </div>
+    </header>
   );
 };
 
