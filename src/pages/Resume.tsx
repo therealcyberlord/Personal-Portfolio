@@ -40,7 +40,8 @@ const educationData: EducationEntry[] = [
     logo: UMassLogo,
     bullets: [
       "GPA: 3.86 / 4.0",
-      "Relevant Coursework: Neural Networks, Machine Learning, Intelligent Visual Computing, Algorithms for Data Science, Software Engineering, Technical Project Management",
+      "Relevant Coursework: Master's Project, Neural Networks, Intelligent Visual Computing, Software Engineering, Machine Learning, Algorithms for Data Science, Technical Project Management",
+      "Extracurricular Activities: Vice President, UMass ACM Machine Learning Club",
     ]
   },
   {
@@ -63,10 +64,10 @@ const resumeData: ResumeExperience[] = [
     endDate: "Present",
     location: "Greater Boston, MA",
     description: [
-      "Build and own an AI analytics platform from 0 to 1, generating six-figure revenue within the first 90 days and reducing analysis delivery time by 40% through tight user feedback loops with stakeholders",
-      "Engineer a hybrid LLM + deterministic cross-tab parser with an interactive visualization layer for real-time filtering and auto-suggested charts",
-      "Design and deploy production multi-agent orchestration over life sciences market research data using LangChain and Deep Agents, with human-in-the-loop validation and Langfuse observability",
-      "Ship full-stack platform features end-to-end (React, Node.js, PostgreSQL, AWS) serving 1,000+ monthly active users across enterprise clients and internal teams"
+      "Build and own a quantitative analytics platform for biopharma from 0 to 1, generating six-figure revenue and cutting manual work by 40%",
+      "Design and deploy multi-agent systems (LangChain, Langfuse) that extract and synthesize commercial insights from PowerPoint, interview transcripts, and structured survey data",
+      "Extend digital twin offering (persona simulations of marketing audiences) with multi-modal input parsing and external agent communication",
+      "Ship full-stack features (React, Koa.js, PostgreSQL, AWS) serving 1,000+ monthly active users across enterprise clients and internal teams"
     ],
     logo: Trinitylogo
   },
@@ -77,9 +78,9 @@ const resumeData: ResumeExperience[] = [
     endDate: "2025-01",
     location: "Amherst, MA",
     description: [
-      "Co-authored and presented MedQA-CS, a novel benchmark for evaluating LLMs via simulated clinical examinations, accepted at EACL 2026",
-      "Implemented RAG strategies with agentic design patterns (planning, reflection, GraphRAG) and test-time compute scaling across medical reasoning benchmarks of varying complexity",
-      "Curated a synthetic dataset via knowledge distillation from GPT-4 to fine-tune Qwen and Llama as judges, achieving 93% correlation with experts on clinical information gathering and physical exams"
+      "Co-authored and presented MedQA-CS, a benchmark for evaluating LLMs via simulated clinical examinations (EACL 2026)",
+      "Researched agentic design patterns (planning, reflection, GraphRAG) and test-time compute scaling to improve reasoning, benchmarked across medical reasoning tasks of varying complexity",
+      "Curated a synthetic dataset distilled from GPT-4 to fine-tune Qwen/Llama as LLM-as-a-judge evaluators, achieving 93% correlation with experts on information gathering and physical exams"
     ],
     logo: CICSlogo
   },
@@ -90,8 +91,8 @@ const resumeData: ResumeExperience[] = [
     endDate: "2024-08",
     location: "Greater Boston, MA",
     description: [
-      "Integrated OpenFDA as an external medical knowledge source into RAG pipelines, automating data updates via cron jobs to ensure the knowledge base stays current",
-      "Enhanced hybrid search to recognize industry terminology and synonyms using Weaviate and spaCy, improving domain-specific retrieval"
+      "Integrated OpenFDA as an external medical knowledge source into RAG pipelines, automating weekly updates via cron jobs",
+      "Enhanced hybrid search to recognize industry terminology and synonyms using Weaviate and spaCy"
     ],
     logo: Trinitylogo
   },
@@ -102,7 +103,7 @@ const resumeData: ResumeExperience[] = [
     endDate: "2023-08",
     location: "Palo Alto, CA",
     description: [
-      "Built a document QA system with RAG, web search, and hallucination mitigation using LangChain, Chroma, GPT-4, and NeMo Guardrails, nominated Best Product out of 6 engineering teams"
+      "Built a PoC RAG system for document question-answering (LangChain, Chroma, OpenAI API, NeMo Guardrails), earning a Best Product nomination out of 6 engineering teams"
     ],
     logo: AICampLogo
   }
@@ -133,38 +134,57 @@ const Resume = () => {
           </p>
         </Reveal>
 
-        {/* Education */}
+        {/* Experience */}
         <div className="mb-12">
           <div className="flex items-center gap-2 mb-5">
-            <GraduationCap className="w-5 h-5 text-sky-400" />
-            <h2 className="display text-2xl text-gray-200">Education</h2>
+            <Briefcase className="w-5 h-5 text-sky-400" />
+            <h2 className="display text-2xl text-gray-200">Experience</h2>
           </div>
           <div className="space-y-6">
-            {educationData.map((edu, i) => (
-              <Reveal key={`${edu.institution}-${edu.degree}`} delay={i * 70}>
+            {sortedResumeData.map((item, i) => (
+              <Reveal key={`${item.institution}-${item.startDate}`} delay={i * 60}>
               <div className="card hover:border-gray-600">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <div className="shrink-0 flex justify-center md:justify-start">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
-                      <img src={edu.logo} alt={`${edu.institution} logo`} className="w-full h-full object-contain" />
+                  {/* Logo */}
+                  {item.logo && (
+                    <div className="shrink-0 flex justify-center md:justify-start">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
+                        <img
+                          src={item.logo}
+                          alt={`${item.institution} logo`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
+                  )}
+
+                  {/* Content */}
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
                       <div>
-                        <h2 className="text-lg font-medium text-gray-200">{edu.degree}</h2>
-                        <h3 className="text-sky-400 text-sm">{edu.institution}</h3>
+                        <h2 className="text-lg font-medium text-gray-200">
+                          {item.title}
+                        </h2>
+                        <h3 className="text-sky-400 text-sm">
+                          {item.institution}
+                        </h3>
                       </div>
                       <div className="font-mono text-xs text-gray-500 md:text-right">
-                        <div>{edu.graduationLabel}</div>
-                        <div>{edu.location}</div>
+                        <div>
+                          {formatDate(item.startDate)} to {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
+                          {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
+                            ? ` (${calculateDuration(item.startDate, item.endDate)})`
+                            : ""}
+                        </div>
+                        <div>{item.location}</div>
                       </div>
                     </div>
+
                     <ul className="space-y-2">
-                      {edu.bullets.map((bullet) => (
-                        <li key={bullet} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
+                      {item.description.map((desc) => (
+                        <li key={desc} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
                           <span className="text-sky-400 mr-2 shrink-0">•</span>
-                          <span>{bullet}</span>
+                          <span>{desc}</span>
                         </li>
                       ))}
                     </ul>
@@ -176,56 +196,37 @@ const Resume = () => {
           </div>
         </div>
 
-        {/* Experience */}
+        {/* Education */}
         <div className="flex items-center gap-2 mb-5">
-          <Briefcase className="w-5 h-5 text-sky-400" />
-          <h2 className="display text-2xl text-gray-200">Experience</h2>
+          <GraduationCap className="w-5 h-5 text-sky-400" />
+          <h2 className="display text-2xl text-gray-200">Education</h2>
         </div>
         <div className="space-y-6">
-          {sortedResumeData.map((item, i) => (
-            <Reveal key={`${item.institution}-${item.startDate}`} delay={i * 60}>
+          {educationData.map((edu, i) => (
+            <Reveal key={`${edu.institution}-${edu.degree}`} delay={i * 70}>
             <div className="card hover:border-gray-600">
               <div className="flex flex-col md:flex-row gap-6">
-                {/* Logo */}
-                {item.logo && (
-                  <div className="shrink-0 flex justify-center md:justify-start">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
-                      <img
-                        src={item.logo}
-                        alt={`${item.institution} logo`}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
+                <div className="shrink-0 flex justify-center md:justify-start">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-white p-2">
+                    <img src={edu.logo} alt={`${edu.institution} logo`} className="w-full h-full object-contain" />
                   </div>
-                )}
-
-                {/* Content */}
+                </div>
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
                     <div>
-                      <h2 className="text-lg font-medium text-gray-200">
-                        {item.title}
-                      </h2>
-                      <h3 className="text-sky-400 text-sm">
-                        {item.institution}
-                      </h3>
+                      <h2 className="text-lg font-medium text-gray-200">{edu.degree}</h2>
+                      <h3 className="text-sky-400 text-sm">{edu.institution}</h3>
                     </div>
                     <div className="font-mono text-xs text-gray-500 md:text-right">
-                      <div>
-                        {formatDate(item.startDate)} to {item.endDate === "Present" ? "Present" : formatDate(item.endDate)}
-                        {calculateDuration(item.startDate, item.endDate) && !calculateDuration(item.startDate, item.endDate).startsWith("0")
-                          ? ` (${calculateDuration(item.startDate, item.endDate)})`
-                          : ""}
-                      </div>
-                      <div>{item.location}</div>
+                      <div>{edu.graduationLabel}</div>
+                      <div>{edu.location}</div>
                     </div>
                   </div>
-
                   <ul className="space-y-2">
-                    {item.description.map((desc) => (
-                      <li key={desc} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
+                    {edu.bullets.map((bullet) => (
+                      <li key={bullet} className="text-gray-300 text-sm leading-relaxed tracking-tight flex">
                         <span className="text-sky-400 mr-2 shrink-0">•</span>
-                        <span>{desc}</span>
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
