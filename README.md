@@ -2,11 +2,11 @@
 
 A modern, responsive portfolio website built with React, TypeScript, and Vite, deployed automatically to GitHub Pages using GitHub Actions.
 
-## 🌐 Live Site
+## Live Site
 
 Visit the live site at: [https://xingyubian.com](https://xingyubian.com)
 
-## 🚀 Technologies Used
+## Technologies Used
 
 - **React** - JavaScript library for building user interfaces
 - **TypeScript** - Typed superset of JavaScript
@@ -18,7 +18,7 @@ Visit the live site at: [https://xingyubian.com](https://xingyubian.com)
 - **GitHub Pages** - Hosting platform
 - **GitHub Actions** - CI/CD automation
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── src/
@@ -33,7 +33,7 @@ Visit the live site at: [https://xingyubian.com](https://xingyubian.com)
 └── .github/workflows/# GitHub Actions workflows
 ```
 
-## 🛠️ Development Setup
+## Development Setup
 
 ### Prerequisites
 
@@ -66,20 +66,16 @@ npm run build
 npm run preview
 ```
 
-## 🚀 Deployment
+## Deployment
 
 This site is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the `main` branch. Please checkout the github workflow for more information.
 
 
-## 🤝 Contributing
-
-This is a personal portfolio site, so contributions aren't expected. However, if you find any issues or have suggestions, feel free to open an issue.
-
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Vite](https://vitejs.dev/) for the amazing build tool
 - [React](https://reactjs.org/) for the UI library
