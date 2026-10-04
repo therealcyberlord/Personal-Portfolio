@@ -1,8 +1,11 @@
-import { Headphones, Bot, Network, Database, Activity, ExternalLink, LucideIcon, BrainCircuit, Eye, GitFork, Award, Users } from 'lucide-react';
+import type { ReactNode } from "react";
+import { Headphones, Bot, Network, Database, Activity, ArrowUpRight, BrainCircuit, Eye, GitFork, Award, Users, type LucideIcon } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import PageHeader from "@/components/PageHeader";
+import usePageTitle from "@/hooks/usePageTitle";
 
-const StatItem = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
-  <div className="flex items-center gap-1.5 text-gray-400 text-sm">
+const StatItem = ({ icon, text }: { icon: ReactNode; text: string }) => (
+  <div className="flex items-center gap-1.5 text-sm text-gray-400">
     {icon}
     <span>{text}</span>
   </div>
@@ -89,74 +92,62 @@ const projects: Project[] = [
 ];
 
 function Projects() {
-  return (
-    <div className="min-h-dvh bg-gray-950 pt-32 pb-20 px-6">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <Reveal className="mb-14">
-          <p className="eyebrow text-sky-400">Portfolio</p>
-          <h1 className="display mt-3 text-5xl md:text-7xl text-gray-200">
-            Projects
-          </h1>
-          <p className="mt-4 max-w-xl text-gray-400">
-            A selection of work in AI, machine learning, and full-stack development.
-          </p>
-        </Reveal>
+  usePageTitle("Projects");
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  return (
+    <div className="px-6 pt-36 pb-24">
+      <div className="mx-auto max-w-5xl">
+        <PageHeader
+          eyebrow="Portfolio"
+          title="Projects"
+          description="A selection of work in AI, machine learning, and full-stack development."
+        />
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
             <Reveal key={project.url} delay={(i % 2) * 90} className="h-full">
-            <div
-              className="card flex h-full flex-col hover:border-sky-500/40 hover:-translate-y-0.5"
-            >
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-sky-400">
-                  <project.icon className="w-5 h-5" />
-                </span>
-                <h2 className="text-lg font-medium text-gray-200">
-                  {project.name}
-                </h2>
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-400 text-sm leading-relaxed mb-5 grow">
-                {project.description}
-              </p>
-
-              {/* Tech Stack Tags */}
-              {project.tags && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="rounded-md bg-gray-800 px-2.5 py-1 font-mono text-xs text-gray-300">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* Stats */}
-              {project.stats && (
-                <div className="flex flex-wrap gap-x-4 gap-y-2 mb-5">
-                  {project.stats.views && <StatItem icon={<Eye className="w-4 h-4" />} text={`${project.stats.views} views`} />}
-                  {project.stats.forks && <StatItem icon={<GitFork className="w-4 h-4" />} text={`${project.stats.forks} forks`} />}
-                  {project.stats.impact && <StatItem icon={<Award className="w-4 h-4" />} text={project.stats.impact} />}
-                  {project.stats.team && <StatItem icon={<Users className="w-4 h-4" />} text={project.stats.team} />}
-                </div>
-              )}
-
-              {/* Link */}
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium group"
+                className="card group flex h-full flex-col hover:-translate-y-0.5 hover:border-sky-500/40"
               >
-                View project
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <project.icon className="h-5 w-5 shrink-0 text-sky-400" aria-hidden="true" />
+                    <h2 className="text-xl font-medium text-gray-200 transition-colors group-hover:text-sky-300">
+                      {project.name}
+                    </h2>
+                  </div>
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0 text-gray-500 transition-[color,transform] duration-300 ease-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sky-400"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <p className="mb-6 grow leading-relaxed text-gray-400">
+                  {project.description}
+                </p>
+
+                {project.stats && (
+                  <div className="mb-5 flex flex-wrap gap-x-4 gap-y-2">
+                    {project.stats.views && <StatItem icon={<Eye className="h-4 w-4" />} text={`${project.stats.views} views`} />}
+                    {project.stats.forks && <StatItem icon={<GitFork className="h-4 w-4" />} text={`${project.stats.forks} forks`} />}
+                    {project.stats.impact && <StatItem icon={<Award className="h-4 w-4" />} text={project.stats.impact} />}
+                    {project.stats.team && <StatItem icon={<Users className="h-4 w-4" />} text={project.stats.team} />}
+                  </div>
+                )}
+
+                {project.tags && (
+                  <ul className="flex flex-wrap gap-2 border-t border-gray-800 pt-5" aria-label="Tech stack">
+                    {project.tags.map(tag => (
+                      <li key={tag} className="rounded-md bg-gray-800 px-2.5 py-1 font-mono text-xs text-gray-300">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </a>
-            </div>
             </Reveal>
           ))}
         </div>

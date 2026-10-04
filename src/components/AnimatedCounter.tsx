@@ -28,8 +28,9 @@ const AnimatedCounter = ({ value }: AnimatedCounterProps) => {
 
     function startAnimation() {
       const match = value.match(/^([\d.]+)([KMB+%]*)$/i);
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      if (!match) {
+      if (!match || reduceMotion) {
         setDisplayValue(value);
         return;
       }
@@ -71,7 +72,12 @@ const AnimatedCounter = ({ value }: AnimatedCounterProps) => {
     };
   }, [value]);
 
-  return <span ref={elementRef}>{displayValue}</span>;
+  return (
+    <span ref={elementRef}>
+      <span className="sr-only">{value}</span>
+      <span aria-hidden="true">{displayValue}</span>
+    </span>
+  );
 };
 
 export default AnimatedCounter;

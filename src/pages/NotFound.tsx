@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Home } from "lucide-react";
+import usePageTitle from "@/hooks/usePageTitle";
 
 import type { GameState } from "./dino-game/types";
 import {
@@ -38,6 +39,7 @@ import {
 } from "./dino-game/utils";
 
 const NotFound = () => {
+  usePageTitle("Page not found");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const gameLoopRef = useRef<number | undefined>(undefined);
   const [score, setScore] = useState<number>(0);

@@ -1,8 +1,11 @@
-import { Code, Layers, Briefcase, ExternalLink, Server, Brain, Mail } from 'lucide-react';
-import { FaLinkedin } from 'react-icons/fa';
+import { ArrowUpRight, Mail } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 import Profile from "@/components/Profile";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
+import usePageTitle from "@/hooks/usePageTitle";
+import { SITE } from "@/data/site";
 import profileImage from "/images/profile.jpg";
 
 type Publication = {
@@ -17,6 +20,8 @@ type Publication = {
 };
 
 const Home = () => {
+  usePageTitle();
+
   const highlights = [
     {
       value: "574K+",
@@ -66,120 +71,90 @@ const Home = () => {
   const skillCategories = [
     {
       title: "Languages",
-      icon: <Code className="w-5 h-5" />,
-      skills: ["Python", "JavaScript", "Java", "C/C++", "SQL"],
+      skills: ["Python", "TypeScript", "Java", "C/C++", "SQL"],
     },
     {
       title: "Frameworks & Libraries",
-      icon: <Layers className="w-5 h-5" />,
       skills: ["React.js", "Node.js", "FastAPI", "Pandas", "Scikit-learn", "Pydantic"],
     },
     {
       title: "Databases & Tools",
-      icon: <Server className="w-5 h-5" />,
       skills: ["PostgreSQL", "AWS", "Git", "Sentry", "CI/CD", "Docker", "Redis"],
     },
     {
       title: "AI/ML",
-      icon: <Brain className="w-5 h-5" />,
       skills: ["LangChain", "Deep Agents", "LlamaIndex", "vLLM", "PyTorch", "Transformers"],
     }
   ];
 
   return (
-    <div className="min-h-dvh bg-gray-950">
+    <>
       <Profile
-        name="Xingyu Bian"
+        name={SITE.name}
         description="Software engineer with an M.S. in Computer Science from UMass Amherst. I take products from zero to one, from full-stack applications to agentic AI."
-        img_path={profileImage}
+        imgPath={profileImage}
         role="Software Engineer · AI Researcher · Builder"
+        footnote={
+          <p className="inline-flex items-center gap-2.5 rounded-full border border-gray-700/60 bg-gray-900/60 px-4 py-1.5 text-left text-sm text-gray-300">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60 motion-reduce:hidden" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
+            </span>
+            <span>
+              Software Engineer at <span className="whitespace-nowrap text-sky-400">Trinity Life Sciences</span>
+            </span>
+          </p>
+        }
       />
 
-      {/* Current Role Banner */}
-      <div className="max-w-2xl mx-auto px-6 -mt-2 mb-24">
-        <Reveal>
-          <div className="flex flex-col items-center gap-1.5 border-y border-gray-800 py-5 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-gray-200">
-              <Briefcase className="w-4 h-4 text-sky-400" />
-              <span>Software Engineer at</span>
-              <span className="text-sky-400">Trinity Life Sciences</span>
-            </div>
-            <p className="text-gray-500 text-sm">
-              Shipping enterprise AI products for life sciences
-            </p>
-          </div>
-        </Reveal>
-      </div>
-
       {/* Impact Highlights */}
-      <section className="py-12 px-6">
-        <div className="max-w-5xl mx-auto">
-          <Reveal className="mb-12">
-            <p className="eyebrow text-sky-400">Selected metrics</p>
-            <h2 className="display mt-3 text-4xl md:text-5xl text-gray-200">
-              Impact &amp; achievements
-            </h2>
-          </Reveal>
+      <section className="px-6 py-10 md:py-16">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading eyebrow="Selected metrics" title="Impact & achievements" />
 
-          <Reveal delay={120}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-3xl border border-gray-800 bg-gray-800/40">
+          <Reveal delay={60}>
+            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-gray-800 bg-gray-800/40 lg:grid-cols-4">
               {highlights.map((item) => (
-                <div
-                  key={item.label}
-                  className="bg-gray-900 p-6"
-                >
-                  <div className="display text-4xl md:text-5xl text-gray-200 tabular-nums">
+                <div key={item.label} className="flex flex-col bg-gray-900 p-6 md:p-7">
+                  <dt className="mt-3 text-sm font-medium text-gray-300">{item.label}</dt>
+                  <dd className="display order-first text-4xl tabular-nums text-gray-200 md:text-5xl">
                     <AnimatedCounter value={item.value} />
-                  </div>
-                  <div className="mt-3 text-gray-300 text-sm font-medium">
-                    {item.label}
-                  </div>
-                  <div className="text-gray-500 text-sm">
-                    {item.sublabel}
-                  </div>
+                  </dd>
+                  <dd className="text-sm text-gray-500">{item.sublabel}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </Reveal>
         </div>
       </section>
 
-      {/* Publications Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <Reveal className="mb-10">
-            <p className="eyebrow text-sky-400">Research &amp; writing</p>
-            <h2 className="display mt-3 text-4xl md:text-5xl text-gray-200">
-              Publications
-            </h2>
-          </Reveal>
+      {/* Publications */}
+      <section className="px-6 py-12 md:py-20">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading eyebrow="Research & writing" title="Publications" />
 
-          <Reveal delay={120} className="divide-y divide-gray-800 border-y border-gray-800">
+          <Reveal delay={60} className="divide-y divide-gray-800 border-y border-gray-800">
             {publications.map((pub) => (
               <a
                 key={pub.url}
                 href={pub.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid gap-4 py-8 md:grid-cols-[10rem_1fr] md:gap-8"
+                className="group grid gap-4 py-8 md:grid-cols-[12rem_1fr] md:gap-8"
               >
                 <div className="flex flex-col gap-1">
-                  <span className="text-gray-200 text-sm font-medium">{pub.venue}</span>
+                  <span className="text-sm font-medium text-gray-200">{pub.venue}</span>
                   <span className="font-mono text-xs text-gray-500">{pub.year} · {pub.venueType}</span>
                 </div>
                 <div>
-                  <h3 className="text-xl text-gray-200 leading-snug group-hover:text-sky-400 transition-colors">
+                  <h3 className="text-xl leading-snug text-gray-200 transition-colors group-hover:text-sky-300">
                     {pub.title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-500">
-                    {pub.authors}
-                  </p>
-                  <p className="mt-3 max-w-prose text-sm leading-relaxed text-gray-400">
-                    {pub.abstract}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-sky-400">
+                  <p className="mt-2 text-sm text-gray-500">{pub.authors}</p>
+                  <p className="mt-3 max-w-prose leading-relaxed text-gray-400">{pub.abstract}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-sky-400">
                     {pub.linkText}
-                    <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </a>
@@ -188,76 +163,65 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <Reveal className="mb-12">
-            <p className="eyebrow text-sky-400">Toolkit</p>
-            <h2 className="display mt-3 text-4xl md:text-5xl text-gray-200">
-              Technical expertise
-            </h2>
-          </Reveal>
+      {/* Skills */}
+      <section className="px-6 py-12 md:py-20">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading eyebrow="Toolkit" title="Technical expertise" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skillCategories.map((category, i) => (
-              <Reveal key={category.title} delay={i * 90} className="h-full">
-                <div className="card h-full hover:border-sky-500/40 hover:-translate-y-0.5">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="text-sky-400">{category.icon}</span>
-                    <h3 className="text-lg font-medium text-gray-200">
-                      {category.title}
-                    </h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map(skill => (
-                      <span
-                        key={skill}
-                        className="rounded-md bg-gray-800 px-2.5 py-1 font-mono text-xs text-gray-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+          <Reveal delay={60}>
+            <dl className="divide-y divide-gray-800 border-y border-gray-800">
+              {skillCategories.map((category) => (
+                <div key={category.title} className="grid gap-3 py-6 md:grid-cols-[12rem_1fr] md:gap-8">
+                  <dt className="text-gray-200 md:pt-1">{category.title}</dt>
+                  <dd>
+                    <ul className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <li key={skill} className="rounded-md bg-gray-800/80 px-2.5 py-1 font-mono text-xs text-gray-300">
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="border-t border-gray-800 py-32 px-6">
-        <Reveal className="max-w-2xl mx-auto text-center">
+      <section className="mt-8 border-t border-gray-800 px-6 pt-20 pb-24 md:mt-12 md:pt-32 md:pb-36">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-sky-400">Get in touch</p>
-          <h2 className="display mt-4 text-6xl md:text-7xl text-gray-200">
-            Let's connect
+          <h2 className="display mt-4 text-6xl tracking-tight text-gray-200 md:text-7xl">
+            Let&apos;s connect
           </h2>
-          <p className="mt-4 text-gray-400">
+          <p className="mt-5 text-lg text-gray-400">
             Open to interesting problems, collaborations, and conversations.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="mailto:xingyubiancyberland@gmail.com"
-              className="group flex items-center gap-3 rounded-full bg-sky-600 py-2.5 pl-6 pr-2.5 font-medium text-gray-950 transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-sky-500 active:scale-[0.97]"
+              href={`mailto:${SITE.email}`}
+              className="group flex items-center gap-3 rounded-full bg-sky-600 py-2.5 pl-6 pr-2.5 font-medium text-gray-950 transition-[background-color,transform] duration-300 ease-spring hover:bg-sky-500 active:scale-[0.97]"
             >
               Email me
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-950/15 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
-                <Mail className="w-4 h-4" />
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-950/15 transition-transform duration-300 ease-spring group-hover:translate-x-0.5 group-hover:-translate-y-px">
+                <Mail className="h-4 w-4" />
               </span>
             </a>
             <a
-              href="https://www.linkedin.com/in/xingyu-bian-1734bb134/"
+              href={SITE.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full border border-gray-700 px-6 py-3 font-medium text-gray-300 transition-colors duration-300 hover:border-gray-600 hover:text-gray-200 active:scale-[0.98]"
+              className="flex items-center gap-2 rounded-full border border-gray-700 px-6 py-3 font-medium text-gray-300 transition-[color,border-color,transform] duration-300 ease-spring hover:border-gray-600 hover:text-gray-200 active:scale-[0.97]"
             >
-              <FaLinkedin className="w-4 h-4" />
+              <FaLinkedin className="h-4 w-4" />
               LinkedIn
             </a>
           </div>
         </Reveal>
       </section>
-    </div>
+    </>
   );
 };
 

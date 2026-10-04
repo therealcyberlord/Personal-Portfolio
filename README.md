@@ -8,7 +8,7 @@ Visit the live site at: [https://xingyubian.com](https://xingyubian.com)
 
 ## Technologies Used
 
-- **React** - JavaScript library for building user interfaces
+- **React** -  library for building user interfaces
 - **TypeScript** - Typed superset of JavaScript
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
